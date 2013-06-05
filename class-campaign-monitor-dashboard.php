@@ -190,6 +190,11 @@ class CampaignMonitorDashboard {
 			wp_enqueue_script( $this->plugin_slug . '-admin-script', plugins_url( 'js/admin.js', __FILE__ ), array( 'jquery' ), $this->version );
 		}
 
+		// Maybe loading this can be done better?
+		if ( $screen->id == $this->plugin_screen_hook_suffix ) {
+			wp_enqueue_script( $this->plugin_slug . '-admin-script-plugins', plugins_url( 'js/admin-plugins.js', __FILE__ ), array( 'jquery' ), $this->version );
+		}
+
 	}
 
 	/**
@@ -245,6 +250,7 @@ class CampaignMonitorDashboard {
 	    register_setting( 'option-group', 'extra_content_option' );
 	    register_setting( 'option-group', 'cm_api_option' );
 	    register_setting( 'option-group', 'cm_list_id_option' );
+	    register_setting( 'option-group', 'cm_client_id_option' );
 	}
 
 	/**

@@ -20,22 +20,130 @@
 
     <p>Your Campaign Monitor settings.</p>
 
-    <form method="post" action="options.php">
+    <form class="settings-form" method="post" action="options.php">
         <?php settings_fields( 'option-group' ); ?>
 
         <p>Extra Content</p>
-        <input type="text" name="extra_content_option" size="80" value="<?php echo get_option('extra_content_option'); ?>" />
+        <input type="text" name="extra_content_option" size="40" value="<?php echo get_option('extra_content_option'); ?>" />
 
         <p>API</p>
-        <input type="text" name="cm_api_option" size="80" value="<?php echo get_option('cm_api_option'); ?>" />
+        <input type="text" name="cm_api_option" size="40" value="<?php echo get_option('cm_api_option'); ?>" />
 
         <p>List ID</p>
-        <input type="text" name="cm_list_id_option" size="80" value="<?php echo get_option('cm_list_id_option'); ?>" />
+        <input type="text" name="cm_list_id_option" size="40" value="<?php echo get_option('cm_list_id_option'); ?>" />
+
+        <p>Client ID</p>
+        <input type="text" name="cm_client_id_option" size="40" value="<?php echo get_option('cm_client_id_option'); ?>" />
+
+
 
         <p class="submit">
         <input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
         </p>
     </form>
+
+<?php
+
+    $cm_api = get_option('cm_api_option');
+    $cm_list = get_option('cm_list_id_option');
+    $cm_client_id = get_option('cm_client_id_option');
+
+    $auth = array('api_key' => $cm_api);
+    $wrap = new CS_REST_Lists($cm_list, $auth);
+
+    $result = $wrap->get();
+    $stats_result = $wrap->get_stats();
+    $segments_result = $wrap->get_segments();
+
+    if($result->was_successful()) {
+        echo "<div class=\"sub-stats\">";
+        echo "<p>List - " .$result->response->Title. "</p>";
+        echo "<p>Total Subscribers - " .$stats_result->response->TotalActiveSubscribers. "</p>";
+        echo "<p>active - " .$result->response->Title. "</p>";
+        echo "</div>";
+    } else {
+        echo 'Failed with code '.$result->http_status_code."\n<br /><pre>";
+        var_dump($result->response);
+    }
+    echo '</pre>';
+
+?>
+
+
+
+<div class="clear">
+
+
+    <canvas id="canvas" width="400" height="400"></canvas>
+
+<?php
+
+//$lists = array();
+
+$wrap = new CS_REST_Lists($cm_list, $auth);
+
+$result = $wrap->get_active_subscribers(date('Y-m-d', strtotime('-30 days')), 1, 300, 'date', 'asc');
+
+//$result = $wrap->get_active_subscribers(date('Y-m-d', strtotime('-30 days')),
+//  page number, page size, order by, order direction);
+
+echo "Result of GET /api/v3/lists/{ID}/active\n<br />";
+if($result->was_successful()) {
+    echo "Got subscribers\n<br /><pre>";
+
+    $stack = array();
+    $i = 1;
+    $d = '';
+    foreach($result->response->Results as $list) {
+
+        $date = $list->Date;
+        $pattern = '([^\s]+)';
+        preg_match($pattern, $date, $matches);
+       // echo "<p>Date - $matches[0]</p>";
+        $d = $matches[0];
+        array_push($stack, $d);
+
+        $i++;
+    }
+
+    //$array = array("$stack");
+    print_r(array_count_values($stack));
+
+    //var_dump($stack);
+   // var_dump($result->response);
+} else {
+    echo 'Failed with code '.$result->http_status_code."\n<br /><pre>";
+    var_dump($result->response);
+}
+echo '</pre>';
+
+?>
+
+
+
+<?php
+
+
+// $cm_api = get_option('cm_api_option');
+$cm_client_id = get_option('cm_client_id_option');
+
+$wrap = new CS_REST_Clients(
+    $cm_client_id,
+    $auth);
+
+$result = $wrap->get_lists();
+
+echo "Result of /api/v3/clients/{id}/lists\n<br />";
+if($result->was_successful()) {
+    echo "Got lists\n<br /><pre>";
+    var_dump($result->response);
+} else {
+    echo 'Failed with code '.$result->http_status_code."\n<br /><pre>";
+    var_dump($result->response);
+}
+echo '</pre>';
+?>
+
 
 <?php
     $extra_content = get_option('extra_content_option');
@@ -52,50 +160,10 @@
     echo ('<p> CM List ID: ');
     var_dump($cm_list);
     echo ('</p>');
+
+    $cm_client_id = get_option('cm_client_id_option');
+    echo ('<p> CM Client ID: ');
+    var_dump($cm_client_id);
+    echo ('</p>');
  ?>
-
-
-
- <?php
-
-$auth = array('api_key' => $cm_api);
-$wrap = new CS_REST_Lists($cm_list, $auth);
-
-$result = $wrap->get();
-
-echo "Result of GET /api/v3/lists/{ID}\n<br />";
-if($result->was_successful()) {
-    echo "Got list details\n<br /><pre>";
-    var_dump($result->response);
-} else {
-    echo 'Failed with code '.$result->http_status_code."\n<br /><pre>";
-    var_dump($result->response);
-}
-echo '</pre>';
-
-?>
-
-<?php
-    $auth = array('api_key' => $cm_api);
-    $wrap = new CS_REST_Lists($cm_list, $auth);
-
-    $stats_result = $wrap->get_stats();
-    $result = $wrap->get_segments();
-
-    echo "Result of GET /api/v3/lists/{ID}/stats\n<br />";
-    if($stats_result->was_successful()) {
-        echo "Got list stats\n<br /><pre>";
-
-        var_dump($stats_result->response->TotalActiveSubscribers);
-
-        echo ('Total Active Subscriber - ' .$stats_result->response->TotalActiveSubscribers);
-
-        var_dump($stats_result->response);
-
-    } else {
-        echo 'Failed with code '.$stats_result->http_status_code."\n<br /><pre>";
-        var_dump($stats_result->response);
-    }
-    echo '</pre>';
-?>
-
+ </div>

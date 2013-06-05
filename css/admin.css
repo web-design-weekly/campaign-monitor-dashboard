@@ -1,1 +1,25 @@
 /* This stylesheet is used to style the admin option form of the plugin. */
+
+.settings-form {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 25%;
+    float: left;
+}
+
+.sub-stats {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-left: 10px;
+    float: left;
+    width: 25%;
+}
+
+.clear {
+    display: block;
+    clear: both;
+    margin-top: 440px;
+    border-top: 2px solid #ccc;
+}
