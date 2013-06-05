@@ -51,6 +51,7 @@
         echo "<p>List - " .$result->response->Title. "</p>";
         echo "<p>Total Subscribers - " .$stats_result->response->TotalActiveSubscribers. "</p>";
         echo "</div>";
+        //var_dump($result->response);
     } else {
         echo 'Failed with code '.$result->http_status_code."\n<br /><pre>";
         var_dump($result->response);
