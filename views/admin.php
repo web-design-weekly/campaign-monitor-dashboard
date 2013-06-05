@@ -23,17 +23,11 @@
     <form class="settings-form" method="post" action="options.php">
         <?php settings_fields( 'option-group' ); ?>
 
-        <p>Extra Content</p>
-        <input type="text" name="extra_content_option" size="40" value="<?php echo get_option('extra_content_option'); ?>" />
-
         <p>API</p>
         <input type="text" name="cm_api_option" size="40" value="<?php echo get_option('cm_api_option'); ?>" />
 
         <p>List ID</p>
         <input type="text" name="cm_list_id_option" size="40" value="<?php echo get_option('cm_list_id_option'); ?>" />
-
-        <p>Client ID</p>
-        <input type="text" name="cm_client_id_option" size="40" value="<?php echo get_option('cm_client_id_option'); ?>" />
 
         <p class="submit">
         <input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
@@ -44,7 +38,6 @@
 
     $cm_api = get_option('cm_api_option');
     $cm_list = get_option('cm_list_id_option');
-    $cm_client_id = get_option('cm_client_id_option');
 
     $auth = array('api_key' => $cm_api);
     $wrap = new CS_REST_Lists($cm_list, $auth);
@@ -135,52 +128,3 @@ jQuery(function () {
 </script>
 
  <canvas id="canvas" width="400" height="400"></canvas>
-
-
-<!--
-<?php
-
-
-// $cm_api = get_option('cm_api_option');
-$cm_client_id = get_option('cm_client_id_option');
-
-$wrap = new CS_REST_Clients(
-    $cm_client_id,
-    $auth);
-
-$result = $wrap->get_lists();
-
-echo "Result of /api/v3/clients/{id}/lists\n<br />";
-if($result->was_successful()) {
-    echo "Got lists\n<br /><pre>";
-    var_dump($result->response);
-} else {
-    echo 'Failed with code '.$result->http_status_code."\n<br /><pre>";
-    var_dump($result->response);
-}
-echo '</pre>';
-?>
-
-
-<?php
-    $extra_content = get_option('extra_content_option');
-    echo ('<p>Extra Content: ');
-    var_dump($extra_content);
-    echo ('</p>');
-
-    $cm_api = get_option('cm_api_option');
-    echo ('<p>CM API: ');
-    var_dump($cm_api);
-    echo ('</p>');
-
-    $cm_list = get_option('cm_list_id_option');
-    echo ('<p> CM List ID: ');
-    var_dump($cm_list);
-    echo ('</p>');
-
-    $cm_client_id = get_option('cm_client_id_option');
-    echo ('<p> CM Client ID: ');
-    var_dump($cm_client_id);
-    echo ('</p>');
- ?>
- </div> -->

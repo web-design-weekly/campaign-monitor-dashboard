@@ -94,8 +94,6 @@ class CampaignMonitorDashboard {
 		// Load the widget for plugin
 		//add_action( 'wp_register_sidebar_widget', array( $this, 'plugin_widget' ) );
 
-		// Loads the extra content at the end of the post
-		add_filter( 'the_content', array( $this, 'add_content' ) );
 
 	}
 
@@ -247,10 +245,8 @@ class CampaignMonitorDashboard {
 
     public function register_settings() {
 	    //register our settings
-	    register_setting( 'option-group', 'extra_content_option' );
 	    register_setting( 'option-group', 'cm_api_option' );
 	    register_setting( 'option-group', 'cm_list_id_option' );
-	    register_setting( 'option-group', 'cm_client_id_option' );
 	}
 
 	/**
@@ -262,21 +258,6 @@ class CampaignMonitorDashboard {
 		include_once( 'views/admin.php' );
 	}
 
-	/**
-	 * Renders the content specified at the end of each post.
-	 *
-	 * @since    1.0.0
-	 */
-	public function add_content($content) {
-
-		$no_exists_value = get_option('extra_content_option');
-
-		if(is_single()) {
-			$extra_content = $no_exists_value;
-			$content .= $extra_content;
-		}
-		return $content;
-	}
 
 	/* Dummy Functions  for dev*/
 
