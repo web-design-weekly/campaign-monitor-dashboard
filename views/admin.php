@@ -35,8 +35,6 @@
         <p>Client ID</p>
         <input type="text" name="cm_client_id_option" size="40" value="<?php echo get_option('cm_client_id_option'); ?>" />
 
-
-
         <p class="submit">
         <input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
         </p>
@@ -59,7 +57,6 @@
         echo "<div class=\"sub-stats\">";
         echo "<p>List - " .$result->response->Title. "</p>";
         echo "<p>Total Subscribers - " .$stats_result->response->TotalActiveSubscribers. "</p>";
-        echo "<p>active - " .$result->response->Title. "</p>";
         echo "</div>";
     } else {
         echo 'Failed with code '.$result->http_status_code."\n<br /><pre>";
@@ -73,12 +70,7 @@
 
 <div class="clear">
 
-
-    <canvas id="canvas" width="400" height="400"></canvas>
-
 <?php
-
-//$lists = array();
 
 $wrap = new CS_REST_Lists($cm_list, $auth);
 
@@ -93,7 +85,7 @@ if($result->was_successful()) {
 
     $stack = array();
     $i = 1;
-    $d = '';
+
     foreach($result->response->Results as $list) {
 
         $date = $list->Date;
@@ -111,6 +103,7 @@ if($result->was_successful()) {
 
     //var_dump($stack);
    // var_dump($result->response);
+
 } else {
     echo 'Failed with code '.$result->http_status_code."\n<br /><pre>";
     var_dump($result->response);
@@ -119,8 +112,32 @@ echo '</pre>';
 
 ?>
 
+<script type="text/javascript">
+
+jQuery(function () {
+  var lineChartData = {
+            labels : ["January","February","March","April","May","June","July"],
+            datasets : [
+                {
+                    fillColor : "rgba(151,187,205,0.5)",
+                    strokeColor : "rgba(151,187,205,1)",
+                    pointColor : "rgba(151,187,205,1)",
+                    pointStrokeColor : "#fff",
+                    data : [28,48,40,19,96,27,100]
+                }
+            ]
+
+        }
+
+    var myLine = new Chart(document.getElementById("canvas").getContext("2d")).Line(lineChartData);
+});
+
+</script>
+
+ <canvas id="canvas" width="400" height="400"></canvas>
 
 
+<!--
 <?php
 
 
@@ -166,4 +183,4 @@ echo '</pre>';
     var_dump($cm_client_id);
     echo ('</p>');
  ?>
- </div>
+ </div> -->
