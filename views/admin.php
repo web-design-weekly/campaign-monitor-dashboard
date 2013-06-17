@@ -68,35 +68,70 @@
 
 $wrap = new CS_REST_Lists($cm_list, $auth);
 
-$result = $wrap->get_active_subscribers(date('Y-m-d', strtotime('-30 days')), 1, 300, 'date', 'asc');
+function get_actives($auth, $page_number)
+{
+    // last 365 days
+    $date_from = date('Y-m-d', strtotime('-365 days'));
 
-//$result = $wrap->get_active_subscribers(date('Y-m-d', strtotime('-30 days')),
-//  page number, page size, order by, order direction);
+    // params: start date, page number, page size, order by, order direction
+    $result = $auth->get_active_subscribers($date_from, $page_number, 1000, 'date', 'asc');
+    return $result;
+}
+
+
+// get the first page of results
+// currently assuming if this succeeds, then all calls for subsequent pages will also succeed
+$result = get_actives($wrap, 1);
 
 echo "Result of GET /api/v3/lists/{ID}/active\n<br />";
 if($result->was_successful()) {
     echo "Got subscribers\n<br /><pre>";
 
+    echo("ResultsOrderedBy ".$result->response->ResultsOrderedBy."\n");
+    echo("OrderDirection ".$result->response->OrderDirection."\n");
+    echo("PageNumber ".$result->response->PageNumber."\n");
+    echo("PageSize ".$result->response->PageSize."\n");
+    echo("RecordsOnThisPage ".$result->response->RecordsOnThisPage."\n");
+    echo("TotalNumberOfRecords ".$result->response->TotalNumberOfRecords."\n");
+    echo("NumberOfPages ".$result->response->NumberOfPages."\n");
+
+
+    $num_pages = $result->response->NumberOfPages;
     $stack = array();
-    $i = 1;
 
-    foreach($result->response->Results as $list) {
+    // we've already got page 1; loop from 1 until < num_pages
+    for($i = 1; $i < $num_pages; $i++) {
+        foreach($result->response->Results as $list) {
 
-        $date = $list->Date;
-        $pattern = '([^\s]+)';
-        preg_match($pattern, $date, $matches);
-       // echo "<p>Date - $matches[0]</p>";
-        $d = $matches[0];
-        array_push($stack, $d);
+            $date = $list->Date;
+            // echo $date."\n";
 
-        $i++;
+            // // just get the date part of the $list->Date?
+            // $pattern = '([^\s]+)';
+            // preg_match($pattern, $date, $matches);
+            // $d = $matches[0];
+
+            // just get the month part of the $list->Date
+            $d = substr($date, 0, 7);
+
+            array_push($stack, $d);
+        }
+
+        $next_page = $i+1;
+        $result = get_actives($wrap, $next_page);
     }
 
-    //$array = array("$stack");
-    print_r(array_count_values($stack));
+    // $stack now contains the results for all active subscribers
 
-    //var_dump($stack);
-   // var_dump($result->response);
+    // print the data
+    print_r(array_count_values($stack));
+    $graph_data = array_count_values($stack);
+    
+    $php_keys = array_keys($graph_data);
+     $js_keys = json_encode($php_keys);
+
+    $php_vals = array_values($graph_data);
+     $js_vals = json_encode($php_vals);
 
 } else {
     echo 'Failed with code '.$result->http_status_code."\n<br /><pre>";
@@ -110,14 +145,14 @@ echo '</pre>';
 
 jQuery(function () {
   var lineChartData = {
-            labels : ["January","February","March","April","May","June","July"],
+            labels : <?php echo $js_keys; ?>,
             datasets : [
                 {
                     fillColor : "rgba(151,187,205,0.5)",
                     strokeColor : "rgba(151,187,205,1)",
                     pointColor : "rgba(151,187,205,1)",
                     pointStrokeColor : "#fff",
-                    data : [28,48,40,19,96,27,100]
+                    data : <?php echo $js_vals; ?>
                 }
             ]
 
@@ -128,4 +163,4 @@ jQuery(function () {
 
 </script>
 
- <canvas id="canvas" width="400" height="400"></canvas>
+ <canvas id="canvas" width="700" height="400"></canvas>
