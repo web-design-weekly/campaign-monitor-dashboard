@@ -126,7 +126,7 @@ if($result->was_successful()) {
     // print the data
     print_r(array_count_values($stack));
     $graph_data = array_count_values($stack);
-    
+
     $php_keys = array_keys($graph_data);
      $js_keys = json_encode($php_keys);
 
