@@ -29,10 +29,10 @@
 
 		<div class="major-settings">
 			<p>API</p>
-		<input type="text" class="cm_api_option" name="cm_api_option" size="40" value="<?php echo get_option('cm_api_option'); ?>" />
+		<input type="text" class="cm_api_option" name="cm_api_option" size="35" value="<?php echo get_option('cm_api_option'); ?>" />
 
 		<p>List ID</p>
-		<input type="text" class="cm_list_id_option" name="cm_list_id_option" size="40" value="<?php echo get_option('cm_list_id_option'); ?>" />
+		<input type="text" class="cm_list_id_option" name="cm_list_id_option" size="35" value="<?php echo get_option('cm_list_id_option'); ?>" />
 
 		<p class="submit">
 		<input type="submit" class="button-primary cm-settings-button" value="<?php _e('Save Changes') ?>" />
@@ -44,13 +44,16 @@
 <div id="cm-stats"></div>
 
 <div id="subs-per-month">
-	<h2>Subscribers Per Month</h2>
+	<h2>Subscribers Per Month (Last 365 days)</h2>
+	<div id="graph-1">
 	<img src="<?php echo admin_url('/images/wpspin_light.gif'); ?>" class="subs-per-month-waiting"/>
-	<canvas id="canvas-graph-1" width="1000" height="400"></canvas>
+	</div>
+	<canvas id="canvas-graph-1" width="700" height="400"></canvas>
 </div>
 
+<!--
 <h2>Subscribers Over Time</h2>
 <canvas id="canvas-graph-2" width="700" height="400"></canvas>
 <div id="graphs"></div>
-
+ -->
 

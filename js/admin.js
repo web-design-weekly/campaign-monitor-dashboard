@@ -18,22 +18,23 @@
 			$('#cm-stats').html(response);
 		});
 
-		// Graph Ajax
+		// Graph 1 Ajax
 		data = {
 			action: 'aad_get_results'
 		};
 
 		$.post(ajaxurl, data, function (response) {
-			console.log('boom');
 			console.log(response);
-			$('#graphs').html(response);
-			$('.subs-per-month-waiting').hide();
+			//$('#subs-per-month').hide();
+			$('#graph-1').html(response);
+			$('.subs-per-month-waiting').hide()
 		});
 
 	} else {
 		$('.major-settings').toggle();
 		$('.waiting').hide();
-		$('.subs-per-month-waiting').hide();
+		$('.subs-per-month-waiting').hide()
+
 		$('#cm-stats').html('Please add your correct credentials to get the ball rolling.');
 		console.log('no values');
 	}
@@ -42,6 +43,7 @@
 	$('.edit-credentials').click(function () {
 		console.log("clicked settings");
 		$('.major-settings').toggle();
+
 	});
 
 });

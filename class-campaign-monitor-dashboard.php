@@ -92,11 +92,12 @@ class CampaignMonitorDashboard {
 
 		// loads JavaScript Ajax
 
-
 		add_action( 'wp_ajax_get_cm_settings', array( $this, 'process_cm_settings' ) );
+		add_action( 'wp_ajax_aad_get_results', array( $this, 'aad_process_ajax' ) );
 
 		add_action( 'wp_ajax_aad_get_results', array( $this, 'aad_process_ajax' ) );
 
+		// add_action( 'wp_localize_script', array( $this, 'aad_process_ajax') );
 
 		//add_action('wp_ajax_aad_get_results', 'aad_process_ajax');
 
@@ -311,10 +312,38 @@ class CampaignMonitorDashboard {
 		// $segments_result = $wrap->get_segments();
 
 		if($result->was_successful()) {
+
 			$total_active_subscribers = $stats_result->response->TotalActiveSubscribers;
+			$new_sub_today = $stats_result->response->NewActiveSubscribersToday;
+			$new_sub_yesterday = $stats_result->response->NewActiveSubscribersYesterday;
+			$new_sub_this_week = $stats_result->response->NewActiveSubscribersThisWeek;
+			$new_sub_this_month = $stats_result->response->NewActiveSubscribersThisMonth;
+			$new_sub_this_year = $stats_result->response->NewActiveSubscribersThisYear;
+
+			$total_unsubscribers = $stats_result->response->TotalUnsubscribes;
+			$un_sub_today = $stats_result->response->UnsubscribesToday;
+			$un_sub_yesterday = $stats_result->response->UnsubscribesYesterday;
+			$un_sub_this_week = $stats_result->response->UnsubscribesThisWeek;
+			$un_sub_this_month = $stats_result->response->UnsubscribesThisMonth;
+			$un_sub_this_year = $stats_result->response->UnsubscribesThisYear;
+
 			echo "<div class=\"sub-stats\">";
 			echo "<p>List - " .$result->response->Title. "</p>";
 			echo "<p>Total Subscribers - " .$total_active_subscribers. "</p>";
+			echo "<p>Subscribers Today - " .$new_sub_today. "</p>";
+			echo "<p>Subscribers Yesterday - " .$new_sub_yesterday. "</p>";
+			echo "<p>Subscribers This Week - " .$new_sub_this_week. "</p>";
+			echo "<p>Subscribers This Month - " .$new_sub_this_month. "</p>";
+			echo "<p>Subscribers This Year - " .$new_sub_this_year. "</p>";
+			echo "</div>";
+
+			echo "<div class=\"sub-stats\">";
+			echo "<p>Total Unsubscribers - " .$total_unsubscribers. "</p>";
+			echo "<p>Unsubscribers Today - " .$un_sub_today. "</p>";
+			echo "<p>Unsubscribers Yesterday - " .$un_sub_yesterday. "</p>";
+			echo "<p>Unsubscribers This Week - " .$un_sub_this_week. "</p>";
+			echo "<p>Unsubscribers This Month - " .$un_sub_this_month. "</p>";
+			echo "<p>Unsubscribers This Year - " .$un_sub_this_year. "</p>";
 			echo "</div>";
 			?>
 				<!-- Would like to have this in admin js... -->
@@ -360,38 +389,24 @@ class CampaignMonitorDashboard {
 		    $result = $auth->get_active_subscribers($date_from, $page_number, 1000, 'date', 'asc');
 
 		    if($result->was_successful()) {
-		        echo "<p>Got subscribers</p>";
-		        echo "<pre>";
-
-		        echo("ResultsOrderedBy ".$result->response->ResultsOrderedBy."\n");
-		        echo("OrderDirection ".$result->response->OrderDirection."\n");
-		        echo("PageNumber ".$result->response->PageNumber."\n");
-		        echo("PageSize ".$result->response->PageSize."\n");
-		        echo("RecordsOnThisPage ".$result->response->RecordsOnThisPage."\n");
-		        echo("TotalNumberOfRecords ".$result->response->TotalNumberOfRecords."\n");
-		        echo("NumberOfPages ".$result->response->NumberOfPages."\n");
-		        echo "</pre>";
 
 		    } else {
-		        echo "<pre>";
+
 		        echo '<p>Failed with code '.$result->http_status_code."</p>";
-		        var_dump($result->response);
-		        echo "</pre>";
+
+
 		    }
 
 		    return $result;
 		}
 
-			function add_results_to_stack($stack, $result)
-			{
+			function add_results_to_stack($stack, $result) {
 			    foreach($result->response->Results as $list) {
 			        $date = $list->Date;
 			        $d = substr($date, 0, 7);   // just get the month part of the $list->Date
-			        // could convert this to pretty text for month?
-			        array_push($stack, $d);
+					$niceDate = date("M-y", strtotime($d));
+			        array_push($stack, $niceDate);
 			    }
-
-			    print_r("Size of stack: ".sizeof($stack));
 
 			    return $stack;
 			}
@@ -418,50 +433,14 @@ class CampaignMonitorDashboard {
     // get data for graph
     $graph_data = array_count_values($stack);
 
-    //
     // end of API calls
 
-    // **-**
-
-
-    // hard-coded test data
-    // to use comment out from **-** to **-**
-    // $graph_data = array("2012-06"=>67, "2012-07"=>185, "2012-08"=>663, "2012-09"=>112, "2012-10"=>160, "2012-11"=>234, "2012-12"=>1569, "2013-01"=>2059, "2013-02"=>824, "2013-03"=>559, "2013-04"=>526, "2013-05"=>1600, "2013-06"=>442);
 
     $php_keys = array_keys($graph_data);
      $js_keys = json_encode($php_keys);
 
     $php_vals = array_values($graph_data);
      $js_vals = json_encode($php_vals);
-
-
-    // create data for the running total graph
-
-    $graph_data_running = $graph_data;
-    $len = sizeof($graph_data_running)-1;
-
-    $keys = array_keys($graph_data);
-
-    // set last element of running total as total_active_subscribers
-    // then calculate previous months by working backwords
-    //$graph_data_running[$keys[$len]] = $total_active_subscribers;
-    //$total_active_subscribers = $graph_data_running[$keys[$len]];
-
-    for ($i=$len-1; $i >= 0 ; $i--) {
-        $graph_data_running[$keys[$i]] = $graph_data_running[$keys[$i+1]] - $graph_data[$keys[$i+1]];
-    }
-
-    $php_keys_running = array_keys($graph_data_running);
-     $js_keys_running = json_encode($php_keys_running);
-
-    $php_vals_running = array_values($graph_data_running);
-     $js_vals_running = json_encode($php_vals_running);
-
-
-    echo '<pre>';
-        print_r($graph_data);
-        print_r($graph_data_running);
-    echo '</pre>';
 
 ?>
 
@@ -480,22 +459,10 @@ jQuery(function () {
             ]
         }
 
-    var lineChartDataRunning = {
-            labels : <?php echo $js_keys_running; ?>,
-            datasets : [
-                {
-                    fillColor : "rgba(151,187,205,0.5)",
-                    strokeColor : "rgba(151,187,205,1)",
-                    pointColor : "rgba(151,187,205,1)",
-                    pointStrokeColor : "#fff",
-                    data : <?php echo $js_vals_running; ?>
-                }
-            ]
-        }
-    var optionsRunning = {bezierCurve : false};
+
 
     var myLine = new Chart(document.getElementById("canvas-graph-1").getContext("2d")).Line(lineChartDataMonthly);
-    var myLine = new Chart(document.getElementById("canvas-graph-2").getContext("2d")).Line(lineChartDataRunning, optionsRunning);
+
 });
 
 </script>

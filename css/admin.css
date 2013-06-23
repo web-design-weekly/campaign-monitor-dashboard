@@ -6,19 +6,27 @@
 }
 
 .settings-form {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    padding: 10px 0;
     width: 25%;
     float: left;
+    margin-bottom: 10px;
 }
-
 
 .major-settings {
     display: none;
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.major-settings .submit {
+    padding: 1.5em 0 0;
 }
 
 .successful-credentials {
+    /*padding: 10px 0;
+    border: none;*/
 
 }
 
@@ -33,11 +41,15 @@
     display: none;
 }
 
+#cm-stats {
+    clear: both;
+}
+
 .sub-stats {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    margin-left: 10px;
+    margin-right: 10px;
     float: left;
     width: 25%;
 }
@@ -45,6 +57,7 @@
 
 #subs-per-month {
     clear: both;
+    width: 800px;
 }
 
 #canvas-graph-1 {
