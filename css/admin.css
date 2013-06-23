@@ -1,11 +1,36 @@
 /* This stylesheet is used to style the admin option form of the plugin. */
 
+#icon-cm_icon {
+    background: transparent url( '../assets/cm-icon.png' ) no-repeat -30px -33px;
+    padding-right: 2px;
+}
+
 .settings-form {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     width: 25%;
     float: left;
+}
+
+
+.major-settings {
+    display: none;
+}
+
+.successful-credentials {
+
+}
+
+.edit-credentials {
+    display: none;
+}
+.successful-credentials .edit-credentials {
+    display: block;
+}
+
+.successful-credentials .major-settings {
+    display: none;
 }
 
 .sub-stats {
@@ -17,9 +42,11 @@
     width: 25%;
 }
 
-.clear {
-    display: block;
+
+#subs-per-month {
     clear: both;
-    margin-top: 270px;
-    border-top: 2px solid #ccc;
+}
+
+#canvas-graph-1 {
+    width:100% !important;
 }
