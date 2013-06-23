@@ -16,12 +16,55 @@
     display: none;
     margin-top: 10px;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    border: 2px solid #eee;
 }
+
+.major-settings p {
+    color: #7d7d7d;
+}
+
 
 .major-settings .submit {
     padding: 1.5em 0 0;
+}
+
+.help {
+    text-align: right;
+    margin-bottom: 0;
+}
+
+.help a {
+    margin-right: 5px;
+    font-size: 11px;
+    font-style: normal;
+    color: #29AAE2;
+    text-decoration: none;
+     -webkit-transition: color .1s ease-out;
+    -moz-transition: color .1s ease-out;
+    -o-transition: color .1s ease-out;
+    transition: color .1s ease-out;
+}
+
+.help a:hover {
+     color: #76D0E9;
+}
+
+.cm-error {
+    background: #fbe5b9;
+    color: #a48b5e;
+    border: solid 1px #CFBC97;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    display: inline-block;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+
+}
+
+.cm-error span {
+    font-weight: normal;
 }
 
 .successful-credentials {
@@ -35,23 +78,79 @@
 }
 .successful-credentials .edit-credentials {
     display: block;
+    font-size: 11px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #29AAE2;
+    width: 100px;
+    -webkit-transition: color .1s ease-out;
+    -moz-transition: color .1s ease-out;
+    -o-transition: color .1s ease-out;
+    transition: color .1s ease-out;
+}
+
+.successful-credentials .edit-credentials:hover {
+    color: #76D0E9;
 }
 
 .successful-credentials .major-settings {
     display: none;
 }
 
+.current-list {
+    border-bottom: 2px solid #eee;
+    display: inline-block;
+}
+
+.current-list h3 {
+    color: #444;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    font-family: "Helvetica Neue",arial,Helvetica,sans-serif;
+    margin: 0;
+}
+.current-list p {
+    color: #959595;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.current-list .unsub {
+    font-size: 14px;
+    font-weight: normal;
+}
+
+
 #cm-stats {
     clear: both;
 }
 
+.stats {
+
+}
+
 .sub-stats {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
     margin-right: 10px;
     float: left;
-    width: 25%;
+    width: 10%;
+}
+
+.sub-stats h4 {
+    font-size: 14px;
+}
+
+.sub-stats p span {
+    color: #252525;
+    font-size: 11px;
+    display: block;
+    font-weight: bold;
+    margin-bottom: 3px;
+}
+
+.sub-stats p {
+ color: #959595;
+ font-size: 18px;
 }
 
 

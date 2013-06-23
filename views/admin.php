@@ -20,6 +20,7 @@
 
 	<!-- <p>Your Campaign Monitor settings.</p> -->
 
+
 	<form class="settings-form" method="post" action="options.php">
 		<?php settings_fields( 'option-group' ); ?>
 
@@ -37,19 +38,25 @@
 		<p class="submit">
 		<input type="submit" class="button-primary cm-settings-button" value="<?php _e('Save Changes') ?>" />
 		</p>
+
+		<p class="help">
+			<a href="">Find API Key</a>
+			<a href="">Find List ID</a>
+		</p>
+
 		</div>
 
 	</form>
 
 <div id="cm-stats"></div>
-
+<!--
 <div id="subs-per-month">
 	<h2>Subscribers Per Month (Last 365 days)</h2>
 	<div id="graph-1">
 	<img src="<?php echo admin_url('/images/wpspin_light.gif'); ?>" class="subs-per-month-waiting"/>
 	</div>
 	<canvas id="canvas-graph-1" width="700" height="400"></canvas>
-</div>
+</div> -->
 
 <!--
 <h2>Subscribers Over Time</h2>

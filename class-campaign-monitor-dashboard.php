@@ -93,13 +93,7 @@ class CampaignMonitorDashboard {
 		// loads JavaScript Ajax
 
 		add_action( 'wp_ajax_get_cm_settings', array( $this, 'process_cm_settings' ) );
-		add_action( 'wp_ajax_aad_get_results', array( $this, 'aad_process_ajax' ) );
-
-		add_action( 'wp_ajax_aad_get_results', array( $this, 'aad_process_ajax' ) );
-
-		// add_action( 'wp_localize_script', array( $this, 'aad_process_ajax') );
-
-		//add_action('wp_ajax_aad_get_results', 'aad_process_ajax');
+//		add_action( 'wp_ajax_aad_get_results', array( $this, 'aad_process_ajax' ) );
 
 
 
@@ -327,23 +321,30 @@ class CampaignMonitorDashboard {
 			$un_sub_this_month = $stats_result->response->UnsubscribesThisMonth;
 			$un_sub_this_year = $stats_result->response->UnsubscribesThisYear;
 
+			echo "<div class=\"current-list\">";
+			echo "<h3>" .$result->response->Title. "</h3>";
+			echo "<p>Total Subscribers: " .$total_active_subscribers. "</p>";
+			echo "<p class=\"unsub\">Total Unsubscribers: " .$total_unsubscribers. "</p>";
+			echo "</div>";
+
+			echo "<div class=\"stats\">";
 			echo "<div class=\"sub-stats\">";
-			echo "<p>List - " .$result->response->Title. "</p>";
-			echo "<p>Total Subscribers - " .$total_active_subscribers. "</p>";
-			echo "<p>Subscribers Today - " .$new_sub_today. "</p>";
-			echo "<p>Subscribers Yesterday - " .$new_sub_yesterday. "</p>";
-			echo "<p>Subscribers This Week - " .$new_sub_this_week. "</p>";
-			echo "<p>Subscribers This Month - " .$new_sub_this_month. "</p>";
-			echo "<p>Subscribers This Year - " .$new_sub_this_year. "</p>";
+			echo "<h4>Subscribers</h4>";
+			echo "<p><span>Today</span> " .$new_sub_today. "</p>";
+			echo "<p><span>Yesterday</span> " .$new_sub_yesterday. "</p>";
+			echo "<p><span>This Week</span> " .$new_sub_this_week. "</p>";
+			echo "<p><span>This Month</span> " .$new_sub_this_month. "</p>";
+			echo "<p><span>This Year</span> " .$new_sub_this_year. "</p>";
 			echo "</div>";
 
 			echo "<div class=\"sub-stats\">";
-			echo "<p>Total Unsubscribers - " .$total_unsubscribers. "</p>";
-			echo "<p>Unsubscribers Today - " .$un_sub_today. "</p>";
-			echo "<p>Unsubscribers Yesterday - " .$un_sub_yesterday. "</p>";
-			echo "<p>Unsubscribers This Week - " .$un_sub_this_week. "</p>";
-			echo "<p>Unsubscribers This Month - " .$un_sub_this_month. "</p>";
-			echo "<p>Unsubscribers This Year - " .$un_sub_this_year. "</p>";
+			echo "<h4>Unsubscribers</h4>";
+			echo "<p><span>Today</span> " .$un_sub_today. "</p>";
+			echo "<p><span>Yesterday</span> " .$un_sub_yesterday. "</p>";
+			echo "<p><span>This Week</span> " .$un_sub_this_week. "</p>";
+			echo "<p><span>This Month</span> " .$un_sub_this_month. "</p>";
+			echo "<p><span>This Year</span> " .$un_sub_this_year. "</p>";
+			echo "</div>";
 			echo "</div>";
 			?>
 				<!-- Would like to have this in admin js... -->
@@ -354,8 +355,8 @@ class CampaignMonitorDashboard {
 			<?php
 
 		} else {
-			echo '<p>';
-			echo 'Please add your correct credentials to get the ball rolling.';
+			echo '<p class="cm-error">';
+			echo 'Please add your correct credentials <span>to get the ball rolling.</span>';
 			echo '</p>';
 			?>
 				<!-- Would like to have this in admin js... -->

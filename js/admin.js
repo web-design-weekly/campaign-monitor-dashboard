@@ -16,6 +16,7 @@
 
 		$.post(ajaxurl, data, function (response) {
 			$('#cm-stats').html(response);
+			$('.settings-form').addClass('successful-credentials-toggle');
 		});
 
 		// Graph 1 Ajax
@@ -35,7 +36,7 @@
 		$('.waiting').hide();
 		$('.subs-per-month-waiting').hide()
 
-		$('#cm-stats').html('Please add your correct credentials to get the ball rolling.');
+		$('#cm-stats').html('Please add your correct credentials <span>to get the ball rolling</span>.');
 		console.log('no values');
 	}
 
