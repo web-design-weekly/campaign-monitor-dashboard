@@ -93,7 +93,7 @@ class CampaignMonitorDashboard {
 		// loads JavaScript Ajax
 
 		add_action( 'wp_ajax_get_cm_settings', array( $this, 'process_cm_settings' ) );
-//		add_action( 'wp_ajax_aad_get_results', array( $this, 'aad_process_ajax' ) );
+		add_action( 'wp_ajax_get_month_graph', array( $this, 'process_graph_data' ) );
 
 
 
@@ -307,6 +307,8 @@ class CampaignMonitorDashboard {
 
 		if($result->was_successful()) {
 
+
+
 			$total_active_subscribers = $stats_result->response->TotalActiveSubscribers;
 			$new_sub_today = $stats_result->response->NewActiveSubscribersToday;
 			$new_sub_yesterday = $stats_result->response->NewActiveSubscribersYesterday;
@@ -346,11 +348,27 @@ class CampaignMonitorDashboard {
 			echo "<p><span>This Year</span> " .$un_sub_this_year. "</p>";
 			echo "</div>";
 			echo "</div>";
+
+
+
 			?>
 				<!-- Would like to have this in admin js... -->
 				<script type="text/javascript">
 					jQuery('.settings-form').addClass('successful-credentials');
 					jQuery('.waiting').hide();
+
+					// Graph 1 Ajax
+					 // data = {
+					 // 	action: 'get_month_graph'
+					 // };
+
+					 // $.post(ajaxurl, data, function (response) {
+					 // 	//console.log(response);
+					 // 	//$('#subs-per-month').hide();
+					 // 	$('#graph-1').html(response);
+					 // 	$('.subs-per-month-waiting').hide();
+					 // 	$('#subs-per-month').show();
+					 // });
 				</script>
 			<?php
 
@@ -363,10 +381,10 @@ class CampaignMonitorDashboard {
 				<script type="text/javascript">
 					jQuery('.major-settings').toggle();
 					jQuery('.waiting').hide();
+					jQuery('#subs-per-month').hide();
+
 				</script>
 			<?php
-
-
 
 		}
 
@@ -374,7 +392,7 @@ class CampaignMonitorDashboard {
 	}
 
 
-	public function aad_process_ajax() {
+	public function process_graph_data() {
 		$cm_api = get_option('cm_api_option');
 		$cm_list = get_option('cm_list_id_option');
 		$auth = array('api_key' => $cm_api);
@@ -384,7 +402,7 @@ class CampaignMonitorDashboard {
 		function get_actives($auth, $page_number)
 		{
 		    // last 365 days
-		    $date_from = date('Y-m-d', strtotime('-365 days'));
+		    $date_from = date('Y-m-d', strtotime('-90 days'));
 
 		    // params: start date, page number, page size, order by, order direction
 		    $result = $auth->get_active_subscribers($date_from, $page_number, 1000, 'date', 'asc');
@@ -468,7 +486,7 @@ jQuery(function () {
 
 </script>
 <?php
-		die();
+		 die();
 	}
 
 

@@ -11,40 +11,40 @@
 	if (cm_api_settings || cm_list_settings) {
 		// CM Settings Ajax
 		data = {
-			action: 'get_cm_settings'
+			action: 'get_cm_settings',
 		};
 
 		$.post(ajaxurl, data, function (response) {
 			$('#cm-stats').html(response);
 			$('.settings-form').addClass('successful-credentials-toggle');
+			$('#subs-per-month').show();
 		});
 
-		// Graph 1 Ajax
+		//Graph 1 Ajax
 		data = {
-			action: 'aad_get_results'
+			action: 'get_month_graph'
 		};
 
 		$.post(ajaxurl, data, function (response) {
-			console.log(response);
+			//console.log(response);
 			//$('#subs-per-month').hide();
 			$('#graph-1').html(response);
-			$('.subs-per-month-waiting').hide()
+			$('.subs-per-month-waiting').hide();
+			$('#subs-per-month').show();
 		});
 
 	} else {
 		$('.major-settings').toggle();
 		$('.waiting').hide();
-		$('.subs-per-month-waiting').hide()
+		$('.subs-per-month-waiting').hide();
+//		$('#subs-per-month').show();
 
 		$('#cm-stats').html('Please add your correct credentials <span>to get the ball rolling</span>.');
 		console.log('no values');
 	}
 
-
 	$('.edit-credentials').click(function () {
-		console.log("clicked settings");
 		$('.major-settings').toggle();
-
 	});
 
 });

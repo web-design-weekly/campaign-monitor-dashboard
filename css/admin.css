@@ -5,6 +5,11 @@
     padding-right: 2px;
 }
 
+.left-content{
+    float: left;
+    width: 30%;
+}
+
 .settings-form {
     padding: 10px 0;
     width: 25%;
@@ -17,6 +22,7 @@
     margin-top: 10px;
     padding: 10px;
     border: 2px solid #eee;
+    width: 269px;
 }
 
 .major-settings p {
@@ -133,7 +139,7 @@
 .sub-stats {
     margin-right: 10px;
     float: left;
-    width: 10%;
+    width: 40%;
 }
 
 .sub-stats h4 {
@@ -155,8 +161,18 @@
 
 
 #subs-per-month {
-    clear: both;
-    width: 800px;
+    display: none;
+    /*clear: both;
+    width: 800px;*/
+    float: left;
+    width: 70%;
+    margin-top: 162px;
+    margin-left: -75px; /*remove before shipping*/
+}
+
+#subs-per-month h4 {
+    font-size: 14px;
+    font-weight: bold;
 }
 
 #canvas-graph-1 {
