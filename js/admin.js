@@ -33,7 +33,7 @@ $(window).bind("load", function() {
 		$('.major-settings').toggle();
 		$('.waiting').hide();
 		$('.subs-per-month-waiting').hide();
-		$('#cm-stats').html('Please add your correct credentials <span>to get the ball rolling</span>.');
+		$('#cm-stats').html('<p class="cm-error">Please add your correct credentials <span>to get the ball rolling.</span></p>');
 	}
 
 	$('.edit-credentials').click(function () {

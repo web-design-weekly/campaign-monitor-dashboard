@@ -5,15 +5,8 @@
     padding-right: 2px;
 }
 
-.left-content{
-    float: left;
-    width: 30%;
-}
-
 .settings-form {
     padding: 10px 0;
-    width: 25%;
-    float: left;
     margin-bottom: 10px;
 }
 
@@ -97,8 +90,8 @@
 }
 
 .current-list {
-    border-bottom: 2px solid #eee;
-    display: inline-block;
+    clear: both;
+    display: block;
 }
 
 .current-list h3 {
@@ -114,16 +107,19 @@
     font-size: 23px;
     font-weight: bold;
     line-height: 1.2;
+    margin-bottom: 0
 }
 
 .current-list .unsub {
     font-size: 14px;
     font-weight: normal;
+    margin-top: 5px;
 }
 
-
-#cm-stats {
-    clear: both;
+.stats {
+    width: 300px;
+    overflow: hidden;
+    float: left;
 }
 
 .sub-stats {
@@ -153,8 +149,6 @@
     display: none;
     float: left;
     width: 70%;
-    margin-top: 174px;
-    margin-left: -75px;
 }
 
 #subs-per-month h4 {
