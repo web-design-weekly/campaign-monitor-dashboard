@@ -1,6 +1,6 @@
 (function ($) {
 
- $(window).bind("load", function() {
+$(window).bind("load", function() {
 
 	var cm_api_settings = $('.cm_api_option').val(),
 		cm_list_settings = $('.cm_list_id_option').val();
@@ -11,7 +11,7 @@
 	if (cm_api_settings || cm_list_settings) {
 		// CM Settings Ajax
 		data = {
-			action: 'get_cm_settings',
+			action: 'get_cm_settings'
 		};
 
 		$.post(ajaxurl, data, function (response) {
@@ -20,27 +20,23 @@
 			$('#subs-per-month').show();
 		});
 
-		//Graph 1 Ajax
+		//Subs Per Month Graph
 		data = {
 			action: 'get_month_graph'
 		};
 
 		$.post(ajaxurl, data, function (response) {
-			//console.log(response);
-			//$('#subs-per-month').hide();
 			$('#graph-1').html(response);
 			$('.subs-per-month-waiting').hide();
 			$('#subs-per-month').show();
 		});
 
 	} else {
+
 		$('.major-settings').toggle();
 		$('.waiting').hide();
 		$('.subs-per-month-waiting').hide();
-//		$('#subs-per-month').show();
-
 		$('#cm-stats').html('Please add your correct credentials <span>to get the ball rolling</span>.');
-		console.log('no values');
 	}
 
 	$('.edit-credentials').click(function () {

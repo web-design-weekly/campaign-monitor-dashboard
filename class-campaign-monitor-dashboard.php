@@ -265,35 +265,11 @@ class CampaignMonitorDashboard {
 		include_once( 'views/admin.php' );
 	}
 
-
-	/* Dummy Functions  for dev*/
-
 	/**
-	 * NOTE:  Actions are points in the execution of a page or process
-	 *        lifecycle that WordPress fires.
-	 *
-	 *        WordPress Actions: http://codex.wordpress.org/Plugin_API#Actions
-	 *        Action Reference:  http://codex.wordpress.org/Plugin_API/Action_Reference
+	 * Ajax main Campaign Monitor settings panel
 	 *
 	 * @since    1.0.0
 	 */
-	public function action_method_name() {
-		// TODO: Define your action hook callback here
-	}
-
-	/**
-	 * NOTE:  Filters are points of execution in which WordPress modifies data
-	 *        before saving it or sending it to the browser.
-	 *
-	 *        WordPress Filters: http://codex.wordpress.org/Plugin_API#Filters
-	 *        Filter Reference:  http://codex.wordpress.org/Plugin_API/Filter_Reference
-	 *
-	 * @since    1.0.0
-	 */
-	public function filter_method_name() {
-		// TODO: Define your filter hook callback here
-	}
-
 	public function process_cm_settings() {
 		$cm_api = get_option('cm_api_option');
 		$cm_list = get_option('cm_list_id_option');
@@ -303,11 +279,8 @@ class CampaignMonitorDashboard {
 
 		$result = $wrap->get();
 		$stats_result = $wrap->get_stats();
-		// $segments_result = $wrap->get_segments();
 
 		if($result->was_successful()) {
-
-
 
 			$total_active_subscribers = $stats_result->response->TotalActiveSubscribers;
 			$new_sub_today = $stats_result->response->NewActiveSubscribersToday;
@@ -349,26 +322,11 @@ class CampaignMonitorDashboard {
 			echo "</div>";
 			echo "</div>";
 
-
-
 			?>
 				<!-- Would like to have this in admin js... -->
 				<script type="text/javascript">
 					jQuery('.settings-form').addClass('successful-credentials');
 					jQuery('.waiting').hide();
-
-					// Graph 1 Ajax
-					 // data = {
-					 // 	action: 'get_month_graph'
-					 // };
-
-					 // $.post(ajaxurl, data, function (response) {
-					 // 	//console.log(response);
-					 // 	//$('#subs-per-month').hide();
-					 // 	$('#graph-1').html(response);
-					 // 	$('.subs-per-month-waiting').hide();
-					 // 	$('#subs-per-month').show();
-					 // });
 				</script>
 			<?php
 
@@ -382,16 +340,19 @@ class CampaignMonitorDashboard {
 					jQuery('.major-settings').toggle();
 					jQuery('.waiting').hide();
 					jQuery('#subs-per-month').hide();
-
 				</script>
 			<?php
 
 		}
 
-			die();
+		die();
 	}
 
-
+	/**
+	 * Ajax subscribers per month graph data
+	 *
+	 * @since    1.0.0
+	 */
 	public function process_graph_data() {
 		$cm_api = get_option('cm_api_option');
 		$cm_list = get_option('cm_list_id_option');
@@ -401,94 +362,84 @@ class CampaignMonitorDashboard {
 
 		function get_actives($auth, $page_number)
 		{
-		    // last 365 days
-		    $date_from = date('Y-m-d', strtotime('-90 days'));
+			// last 90 days
+			$date_from = date('Y-m-d', strtotime('-90 days'));
 
-		    // params: start date, page number, page size, order by, order direction
-		    $result = $auth->get_active_subscribers($date_from, $page_number, 1000, 'date', 'asc');
+			// params: start date, page number, page size, order by, order direction
+			$result = $auth->get_active_subscribers($date_from, $page_number, 1000, 'date', 'asc');
 
-		    if($result->was_successful()) {
+			if($result->was_successful()) {
 
-		    } else {
+			} else {
 
-		        echo '<p>Failed with code '.$result->http_status_code."</p>";
+				echo '<p>Failed with code '.$result->http_status_code."</p>";
+			}
 
-
-		    }
-
-		    return $result;
+			return $result;
 		}
 
 			function add_results_to_stack($stack, $result) {
-			    foreach($result->response->Results as $list) {
-			        $date = $list->Date;
-			        $d = substr($date, 0, 7);   // just get the month part of the $list->Date
+				foreach($result->response->Results as $list) {
+					$date = $list->Date;
+					$d = substr($date, 0, 7);   // just get the month part of the $list->Date
 					$niceDate = date("M-y", strtotime($d));
-			        array_push($stack, $niceDate);
-			    }
+					array_push($stack, $niceDate);
+				}
 
-			    return $stack;
+				return $stack;
 			}
 
-    // **-**
+		// start of API calls
 
-    // start of API calls
-    //
+		// get the first page of results
+		$result = get_actives($wrap, 1);
+		$stack = add_results_to_stack(array(), $result);
 
-    // get the first page of results
-    $result = get_actives($wrap, 1);
-    $stack = add_results_to_stack(array(), $result);
+		// check if we need to get more pages
+		// we've already got page 1; loop from 1 until < num_pages, and get additional pages if necessary
+		$num_pages = $result->response->NumberOfPages;
+		for($i = 1; $i < $num_pages; $i++) {
+			$next_page = $i+1;
+			$result = get_actives($wrap, $next_page);
+			$stack = add_results_to_stack($stack, $result);
+		}
 
-    // check if we need to get more pages
-    // we've already got page 1; loop from 1 until < num_pages, and get additional pages if necessary
-    $num_pages = $result->response->NumberOfPages;
-    for($i = 1; $i < $num_pages; $i++) {
-        $next_page = $i+1;
-        $result = get_actives($wrap, $next_page);
-        $stack = add_results_to_stack($stack, $result);
-    }
+		// $stack now contains the results for all _active_ subscribers
+		// get data for graph
+		$graph_data = array_count_values($stack);
 
-    // $stack now contains the results for all _active_ subscribers
-    // get data for graph
-    $graph_data = array_count_values($stack);
+		// end of API calls
 
-    // end of API calls
+		$php_keys = array_keys($graph_data);
+		 $js_keys = json_encode($php_keys);
 
+		$php_vals = array_values($graph_data);
+		 $js_vals = json_encode($php_vals);
 
-    $php_keys = array_keys($graph_data);
-     $js_keys = json_encode($php_keys);
-
-    $php_vals = array_values($graph_data);
-     $js_vals = json_encode($php_vals);
-
-?>
-
-<script type="text/javascript">
-jQuery(function () {
-    var lineChartDataMonthly = {
-            labels : <?php echo $js_keys; ?>,
-            datasets : [
-                {
-                    fillColor : "rgba(151,187,205,0.5)",
-                    strokeColor : "rgba(151,187,205,1)",
-                    pointColor : "rgba(151,187,205,1)",
-                    pointStrokeColor : "#fff",
-                    data : <?php echo $js_vals; ?>
-                }
-            ]
-        }
+	?>
 
 
+	<script type="text/javascript">
+	jQuery(function () {
+		var lineChartDataMonthly = {
+				labels : <?php echo $js_keys; ?>,
+				datasets : [
+					{
+						fillColor : "rgba(151,187,205,0.5)",
+						strokeColor : "rgba(151,187,205,1)",
+						pointColor : "rgba(151,187,205,1)",
+						pointStrokeColor : "#fff",
+						data : <?php echo $js_vals; ?>
+					}
+				]
+			}
 
-    var myLine = new Chart(document.getElementById("canvas-graph-1").getContext("2d")).Line(lineChartDataMonthly);
+		var myLine = new Chart(document.getElementById("canvas-graph-1").getContext("2d")).Line(lineChartDataMonthly);
+	});
+	</script>
 
-});
-
-</script>
-<?php
-		 die();
+	<?php
+		die();
 	}
-
-
 
 }

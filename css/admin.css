@@ -29,7 +29,6 @@
     color: #7d7d7d;
 }
 
-
 .major-settings .submit {
     padding: 1.5em 0 0;
 }
@@ -73,12 +72,6 @@
     font-weight: normal;
 }
 
-.successful-credentials {
-    /*padding: 10px 0;
-    border: none;*/
-
-}
-
 .edit-credentials {
     display: none;
 }
@@ -120,6 +113,7 @@
     color: #959595;
     font-size: 23px;
     font-weight: bold;
+    line-height: 1.2;
 }
 
 .current-list .unsub {
@@ -130,10 +124,6 @@
 
 #cm-stats {
     clear: both;
-}
-
-.stats {
-
 }
 
 .sub-stats {
@@ -155,24 +145,26 @@
 }
 
 .sub-stats p {
- color: #959595;
- font-size: 18px;
+    color: #959595;
+    font-size: 18px;
 }
-
 
 #subs-per-month {
     display: none;
-    /*clear: both;
-    width: 800px;*/
     float: left;
     width: 70%;
-    margin-top: 162px;
-    margin-left: -75px; /*remove before shipping*/
+    margin-top: 174px;
+    margin-left: -75px;
 }
 
 #subs-per-month h4 {
     font-size: 14px;
     font-weight: bold;
+}
+
+#subs-per-month h4 span {
+    font-weight: normal;
+    font-size: 11px;
 }
 
 #canvas-graph-1 {

@@ -18,8 +18,6 @@
 	<?php screen_icon( 'cm_icon' ); ?>
 	<h2><?php echo esc_html( get_admin_page_title() ); ?></h2>
 
-	<!-- <p>Your Campaign Monitor settings.</p> -->
-
 <div class="left-content">
 	<form class="settings-form" method="post" action="options.php">
 		<?php settings_fields( 'option-group' ); ?>
@@ -50,7 +48,7 @@
 
 <div id="cm-stats"></div>
 
-</div>
+</div> <!-- left content  -->
 
 <div id="subs-per-month">
 	<h4>Subscribers Per Month <span>(Last 90 days)</span></h4>
