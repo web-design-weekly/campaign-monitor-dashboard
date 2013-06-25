@@ -23,24 +23,24 @@
 		<?php settings_fields( 'option-group' ); ?>
 
 		<a href="#" class="edit-credentials">Edit Credentials</a>
-
 		<img src="<?php echo admin_url('/images/wpspin_light.gif'); ?>" class="waiting"/>
 
 		<div class="major-settings">
+
 			<p>API</p>
-		<input type="text" class="cm_api_option" name="cm_api_option" size="34" value="<?php echo get_option('cm_api_option'); ?>" />
+			<input type="text" class="cm_api_option" name="cm_api_option" size="34" value="<?php echo get_option('cm_api_option'); ?>" />
 
-		<p>List ID</p>
-		<input type="text" class="cm_list_id_option" name="cm_list_id_option" size="34" value="<?php echo get_option('cm_list_id_option'); ?>" />
+			<p>List ID</p>
+			<input type="text" class="cm_list_id_option" name="cm_list_id_option" size="34" value="<?php echo get_option('cm_list_id_option'); ?>" />
 
-		<p class="submit">
-		<input type="submit" class="button-primary cm-settings-button" value="<?php _e('Save Changes') ?>" />
-		</p>
+			<p class="submit">
+			<input type="submit" class="button-primary cm-settings-button" value="<?php _e('Save Changes') ?>" />
+			</p>
 
-		<p class="help">
-			<a href="">Find API Key</a>
-			<a href="">Find List ID</a>
-		</p>
+			<p class="help">
+				<a href="">Find API Key</a>
+				<a href="">Find List ID</a>
+			</p>
 
 		</div>
 

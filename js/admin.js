@@ -5,9 +5,6 @@ $(window).bind("load", function() {
 	var cm_api_settings = $('.cm_api_option').val(),
 		cm_list_settings = $('.cm_list_id_option').val();
 
-	console.log(cm_api_settings);
-	console.log(cm_list_settings);
-
 	if (cm_api_settings || cm_list_settings) {
 		// CM Settings Ajax
 		data = {
@@ -44,6 +41,5 @@ $(window).bind("load", function() {
 	});
 
 });
-
 
 }(jQuery));

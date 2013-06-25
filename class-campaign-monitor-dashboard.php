@@ -80,28 +80,14 @@ class CampaignMonitorDashboard {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 
 		// Register widget
-		add_action( 'widgets_init', create_function( '', 'register_widget( "campaign_monitor_widget" );' ) );
-
-
-		// Define custom functionality. Read more about actions and filters: http://codex.wordpress.org/Plugin_API#Hooks.2C_Actions_and_Filters
-		//add_action( 'TODO', array( $this, 'action_method_name' ) );
-		//add_filter( 'TODO', array( $this, 'filter_method_name' ) );
+		//add_action( 'widgets_init', create_function( '', 'register_widget( "campaign_monitor_widget" );' ) );
 
 		// Load plugin settings
 		add_action( 'admin_init', array( $this, 'register_settings' ) );
 
 		// loads JavaScript Ajax
-
 		add_action( 'wp_ajax_get_cm_settings', array( $this, 'process_cm_settings' ) );
 		add_action( 'wp_ajax_get_month_graph', array( $this, 'process_graph_data' ) );
-
-
-
-		//add_action('widgets_init', array( $this, 'plugin_widget') );
-		// Load the widget for plugin
-		//add_action( 'wp_register_sidebar_widget', array( $this, 'plugin_widget' ) );
-
-
 	}
 
 	/**
@@ -226,14 +212,6 @@ class CampaignMonitorDashboard {
 	 * @since    1.0.0
 	 */
 	public function add_plugin_admin_menu() {
-
-		/*
-		 * TODO:
-		 *
-		 * Change 'Page Title' to the title of your plugin admin page
-		 * Change 'Menu Text' to the text for menu item for the plugin settings page
-		 * Change 'plugin-name' to the name of your plugin
-		 */
 		$this->plugin_screen_hook_suffix = add_plugins_page(
 			__( 'Campaign Monitor Dashboard', $this->plugin_slug ),
 			__( 'Campaign Monitor', $this->plugin_slug ),
@@ -251,7 +229,6 @@ class CampaignMonitorDashboard {
 	 */
 
 	public function register_settings() {
-		//register our settings
 		register_setting( 'option-group', 'cm_api_option' );
 		register_setting( 'option-group', 'cm_list_id_option' );
 	}
