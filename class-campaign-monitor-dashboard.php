@@ -64,31 +64,21 @@ class CampaignMonitorDashboard {
 	 */
 	private function __construct() {
 
-
 		// Load plugin text domain
 		add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
 
 		// Add the options page and menu item.
 		add_action( 'admin_menu', array( $this, 'add_plugin_admin_menu' ) );
 
-		// Load admin style sheet and JavaScript.
+		// Load admin Stylesheet and JavaScript.
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_styles' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_scripts' ) );
-
-		// Load public-facing style sheet and JavaScript.
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
-
-		// Register widget
-		//add_action( 'widgets_init', create_function( '', 'register_widget( "campaign_monitor_widget" );' ) );
 
 		// Load plugin settings
 		add_action( 'admin_init', array( $this, 'register_settings' ) );
 
-		// loads JavaScript Ajax
+		// Loads main Campaign Monitor settings panel
 		add_action( 'wp_ajax_get_cm_settings', array( $this, 'process_cm_settings' ) );
-
-		//add_action( 'wp_ajax_get_month_graph', array( $this, 'process_graph_data' ) );
 	}
 
 	/**
@@ -185,24 +175,6 @@ class CampaignMonitorDashboard {
 	}
 
 	/**
-	 * Register and enqueue public-facing style sheet.
-	 *
-	 * @since    1.0.0
-	 */
-	public function enqueue_styles() {
-		wp_enqueue_style( $this->plugin_slug . '-plugin-styles', plugins_url( 'css/public.css', __FILE__ ), array(), $this->version );
-	}
-
-	/**
-	 * Register and enqueues public-facing JavaScript files.
-	 *
-	 * @since    1.0.0
-	 */
-	public function enqueue_scripts() {
-		wp_enqueue_script( $this->plugin_slug . '-plugin-script', plugins_url( 'js/public.js', __FILE__ ), array( 'jquery' ), $this->version );
-	}
-
-	/**
 	 * Register the administration menu into the WordPress Dashboard menu.
 	 *
 	 * @since    1.0.0
@@ -239,7 +211,7 @@ class CampaignMonitorDashboard {
 	}
 
 	/**
-	 * Ajax main Campaign Monitor settings panel
+	 * Main Campaign Monitor settings panel
 	 *
 	 * @since    1.0.0
 	 */

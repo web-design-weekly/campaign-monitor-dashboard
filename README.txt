@@ -1,14 +1,14 @@
 === Plugin Name ===
-Contributors: (this should be a list of wordpress.org userid's)
+Contributors: jakebresnehan
 Donate link: http://web-design-weekly.com/support
-Tags: comments, spam
+Tags: campaign monitor, email, stats
 Requires at least: 3.5.1
 Tested up to: 3.6
 Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Here is a short description of the plugin.  This should be no more than 150 characters.  No markup here.
+A very simple plugin that displays all the stats from you Campaign Monitor email list.
 
 == Description ==
 

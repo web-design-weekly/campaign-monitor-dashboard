@@ -35,7 +35,6 @@ if ( ! class_exists ( 'CS_REST_Lists' ) )
     require_once ( plugin_dir_path( __FILE__ ) . 'createsend-php/csrest_lists.php' );
 
 require_once( plugin_dir_path( __FILE__ ) . 'class-campaign-monitor-dashboard.php' );
-//require_once( plugin_dir_path( __FILE__ ) . 'class-campaign-monitor-dashboard-widget.php' );
 
 // Register hooks that are fired when the plugin is activated, deactivated, and uninstalled, respectively.
 register_activation_hook( __FILE__, array( 'CampaignMonitorDashboard', 'activate' ) );
