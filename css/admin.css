@@ -1,5 +1,32 @@
 /* This stylesheet is used to style the admin option form of the plugin. */
 
+/* ==========================================================================
+   Section comment block
+   ========================================================================== */
+
+/* Sub-section comment block
+   ========================================================================== */
+
+/**
+ * Short description using Doxygen-style comment format
+ *
+ * The first sentence of the long description starts here and continues on this
+ * line for a while finally concluding here at the end of this paragraph.
+ *
+ * The long description is ideal for more detailed explanations and
+ * documentation. It can include example HTML, URLs, or any other information
+ * that is deemed necessary or useful.
+ *
+ * @tag This is a tag named 'tag'
+ *
+ * TODO: This is a todo statement that describes an atomic task to be completed
+ *   at a later date. It wraps after 80 characters and following lines are
+ *   indented by 2 spaces.
+ */
+
+/* Basic comment */
+
+
 #icon-cm_icon {
     background: transparent url( '../assets/cm-icon.png' ) no-repeat -30px -33px;
     padding-right: 2px;
@@ -143,24 +170,4 @@
 .sub-stats p {
     color: #959595;
     font-size: 18px;
-}
-
-#subs-per-month {
-    display: none;
-    float: left;
-    width: 70%;
-}
-
-#subs-per-month h4 {
-    font-size: 14px;
-    font-weight: bold;
-}
-
-#subs-per-month h4 span {
-    font-weight: normal;
-    font-size: 11px;
-}
-
-#canvas-graph-1 {
-    width:100% !important;
 }

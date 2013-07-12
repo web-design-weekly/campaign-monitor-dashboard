@@ -46,15 +46,5 @@
 
 	</form>
 
-<!-- <div class="left-content"> -->
+
 	<div id="cm-stats"></div>
-<!-- </div> -->
-
-<div id="subs-per-month">
-	<h4>Subscribers Per Month <span>(Last 90 days)</span></h4>
-	<div id="graph-1">
-	<img src="<?php echo admin_url('/images/wpspin_light.gif'); ?>" class="subs-per-month-waiting"/>
-	</div>
-	<canvas id="canvas-graph-1" width="700" height="400"></canvas>
-</div>
-

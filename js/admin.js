@@ -14,25 +14,25 @@ $(window).bind("load", function() {
 		$.post(ajaxurl, data, function (response) {
 			$('#cm-stats').html(response);
 			$('.settings-form').addClass('successful-credentials-toggle');
-			$('#subs-per-month').show();
+			//$('#subs-per-month').show();
 		});
 
-		//Subs Per Month Graph
-		data = {
-			action: 'get_month_graph'
-		};
+		// //Subs Per Month Graph
+		// data = {
+		// 	action: 'get_month_graph'
+		// };
 
-		$.post(ajaxurl, data, function (response) {
-			$('#graph-1').html(response);
-			$('.subs-per-month-waiting').hide();
-			$('#subs-per-month').show();
-		});
+		// $.post(ajaxurl, data, function (response) {
+		// 	$('#graph-1').html(response);
+		// 	$('.subs-per-month-waiting').hide();
+		// 	$('#subs-per-month').show();
+		// });
 
 	} else {
 
 		$('.major-settings').toggle();
 		$('.waiting').hide();
-		$('.subs-per-month-waiting').hide();
+		//$('.subs-per-month-waiting').hide();
 		$('#cm-stats').html('<p class="cm-error">Please add your correct credentials <span>to get the ball rolling.</span></p>');
 	}
 

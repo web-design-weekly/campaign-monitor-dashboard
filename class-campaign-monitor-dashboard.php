@@ -87,7 +87,8 @@ class CampaignMonitorDashboard {
 
 		// loads JavaScript Ajax
 		add_action( 'wp_ajax_get_cm_settings', array( $this, 'process_cm_settings' ) );
-		add_action( 'wp_ajax_get_month_graph', array( $this, 'process_graph_data' ) );
+
+		//add_action( 'wp_ajax_get_month_graph', array( $this, 'process_graph_data' ) );
 	}
 
 	/**
@@ -179,11 +180,6 @@ class CampaignMonitorDashboard {
 		$screen = get_current_screen();
 		if ( $screen->id == $this->plugin_screen_hook_suffix ) {
 			wp_enqueue_script( $this->plugin_slug . '-admin-script', plugins_url( 'js/admin.js', __FILE__ ), array( 'jquery' ), $this->version );
-		}
-
-		// Maybe loading this can be done better?
-		if ( $screen->id == $this->plugin_screen_hook_suffix ) {
-			wp_enqueue_script( $this->plugin_slug . '-admin-script-plugins', plugins_url( 'js/admin-plugins.js', __FILE__ ), array( 'jquery' ), $this->version );
 		}
 
 	}
@@ -322,100 +318,6 @@ class CampaignMonitorDashboard {
 
 		}
 
-		die();
-	}
-
-	/**
-	 * Ajax subscribers per month graph data
-	 *
-	 * @since    1.0.0
-	 */
-	public function process_graph_data() {
-		$cm_api = get_option('cm_api_option');
-		$cm_list = get_option('cm_list_id_option');
-		$auth = array('api_key' => $cm_api);
-
-		$wrap = new CS_REST_Lists($cm_list, $auth);
-
-		function get_actives($auth, $page_number)
-		{
-			// last 90 days
-			$date_from = date('Y-m-d', strtotime('-90 days'));
-
-			// params: start date, page number, page size, order by, order direction
-			$result = $auth->get_active_subscribers($date_from, $page_number, 1000, 'date', 'asc');
-
-			if($result->was_successful()) {
-
-			} else {
-
-				echo '<p>Failed with code '.$result->http_status_code."</p>";
-			}
-
-			return $result;
-		}
-
-			function add_results_to_stack($stack, $result) {
-				foreach($result->response->Results as $list) {
-					$date = $list->Date;
-					$d = substr($date, 0, 7);   // just get the month part of the $list->Date
-					$niceDate = date("M-y", strtotime($d));
-					array_push($stack, $niceDate);
-				}
-
-				return $stack;
-			}
-
-		// start of API calls
-
-		// get the first page of results
-		$result = get_actives($wrap, 1);
-		$stack = add_results_to_stack(array(), $result);
-
-		// check if we need to get more pages
-		// we've already got page 1; loop from 1 until < num_pages, and get additional pages if necessary
-		$num_pages = $result->response->NumberOfPages;
-		for($i = 1; $i < $num_pages; $i++) {
-			$next_page = $i+1;
-			$result = get_actives($wrap, $next_page);
-			$stack = add_results_to_stack($stack, $result);
-		}
-
-		// $stack now contains the results for all _active_ subscribers
-		// get data for graph
-		$graph_data = array_count_values($stack);
-
-		// end of API calls
-
-		$php_keys = array_keys($graph_data);
-		 $js_keys = json_encode($php_keys);
-
-		$php_vals = array_values($graph_data);
-		 $js_vals = json_encode($php_vals);
-
-	?>
-
-
-	<script type="text/javascript">
-	jQuery(function () {
-		var lineChartDataMonthly = {
-				labels : <?php echo $js_keys; ?>,
-				datasets : [
-					{
-						fillColor : "rgba(151,187,205,0.5)",
-						strokeColor : "rgba(151,187,205,1)",
-						pointColor : "rgba(151,187,205,1)",
-						pointStrokeColor : "#fff",
-						data : <?php echo $js_vals; ?>
-					}
-				]
-			}
-
-		var myLine = new Chart(document.getElementById("canvas-graph-1").getContext("2d")).Line(lineChartDataMonthly);
-	});
-	</script>
-
-	<?php
 		die();
 	}
 
