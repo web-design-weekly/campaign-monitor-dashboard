@@ -28,9 +28,6 @@ if ( ! defined( 'WPINC' ) ) {
 if ( ! class_exists ( 'CS_REST_Subscribers' ) )
     require_once ( plugin_dir_path( __FILE__ ) . 'createsend-php/csrest_subscribers.php' );
 
-if ( ! class_exists ( 'CS_REST_Clients' ) )
-    require_once ( plugin_dir_path( __FILE__ ) . 'createsend-php/csrest_clients.php' );
-
 if ( ! class_exists ( 'CS_REST_Lists' ) )
     require_once ( plugin_dir_path( __FILE__ ) . 'createsend-php/csrest_lists.php' );
 
