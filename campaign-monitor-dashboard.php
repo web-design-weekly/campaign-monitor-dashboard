@@ -10,7 +10,7 @@
  * @wordpress-plugin
  * Plugin Name: Campaign Monitor Dashboard
  * Plugin URI:  http://web-design-weekly.com
- * Description: TODO
+ * Description: Display stats from you Campaign Monitor email list.
  * Version:     1.0.0
  * Author:      Jake Bresnehan
  * Author URI:  http://web-design-weekly.com
