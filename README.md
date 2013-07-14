@@ -20,7 +20,6 @@ Spend all day in your WordPress admin and also manage a Campaign Monitor email l
 * Stats for Today, Yesterday, This Week, This Month, This Year
 
 ## Installation
-
 1. Upload `campaign-monitor-dashboard.php` to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Authenticate with Campaign Monitor API Key and List ID
@@ -36,14 +35,13 @@ Need to complete :D
 Need to complete :D
 
 ## Screenshots
-
 1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
 the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets
 directory take precedence. For example, `/assets/screenshot-1.png` would win over `/tags/4.3/screenshot-1.png`
 (or jpg, jpeg, gif).
 2. This is the second screen shot
 
-## Changelog ##
+## Changelog
 
 #### 1.0
 * First version!
