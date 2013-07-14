@@ -1,12 +1,13 @@
 # Campaign Monitor Dashboard
-Contributors: jakebresnehan
-Donate link: [web-design-weekly.com/support](http://web-design-weekly.com/support)
-Tags: campaign monitor, email, stats
-Requires at least: 3.5.1
-Tested up to: 3.5.2
-Stable tag: 1.0.0
-License: GPLv2 or later
-License URI: [http://www.gnu.org/licenses/gpl-2.0.html](http://www.gnu.org/licenses/gpl-2.0.html)
+
+Contributors: jakebresnehan<br>
+Donate link: [web-design-weekly.com/support](http://web-design-weekly.com/support)<br>
+Tags: campaign monitor, email, stats<br>
+Requires at least: 3.5.1<br>
+Tested up to: 3.5.2<br>
+Stable tag: 1.0.0<br>
+License: GPLv2 or later<br>
+License URI: [http://www.gnu.org/licenses/gpl-2.0.html](http://www.gnu.org/licenses/gpl-2.0.html)<br>
 
 A very simple plugin that displays all the stats from you Campaign Monitor email list.
 
