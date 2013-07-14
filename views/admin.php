@@ -38,8 +38,8 @@
 			</p>
 
 			<p class="help">
-				<a href="">Find API Key</a>
-				<a href="">Find List ID</a>
+				<a href="https://gist.github.com/jakebresnehan/5992863">Find API Key</a>
+				<a href="https://gist.github.com/jakebresnehan/5992863">Find List ID</a>
 			</p>
 
 		</div>
