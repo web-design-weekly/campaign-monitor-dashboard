@@ -18,7 +18,21 @@
 	<?php screen_icon( 'cm_icon' ); ?>
 	<h2><?php echo esc_html( get_admin_page_title() ); ?></h2>
 
+	<?php
+		if(CMD_OLD_WRAPPER){
+		?>
 
+		<div class="old-wrapper">
+			<h2>Hey!</h2>
+			<p>Thanks for taking the time to install this plugin. Unfortunately there is another plugin installed which uses an <b>old</b> version of the Campaign Monitor API. This is causing some conflicting issues.</p>
+			<p>To use this plugin you will need to un-install that plugin.</p>
+			<p>If you would like more details on why this is the case, please don't hesitate to <a href="mailto:support@web-design-weekly.com?Subject=Campaign%20Monitor%20Plugin%20Questions">email</a>.
+
+		</div>
+
+		<?php
+		} else {
+	?>
 	<form class="settings-form" method="post" action="options.php">
 		<?php settings_fields( 'option-group' ); ?>
 
@@ -48,3 +62,6 @@
 
 
 	<div id="cm-stats"></div>
+<?php
+}
+?>

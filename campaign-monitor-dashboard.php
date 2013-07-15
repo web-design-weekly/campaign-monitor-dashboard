@@ -25,16 +25,26 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-if ( ! class_exists ( 'CS_REST_Subscribers' ) )
-    include_once ( plugin_dir_path( __FILE__ ) . 'cm-php/csrest_subscribers.php' );
+if ( ! class_exists ( 'CS_REST_Subscribers' ) ){
+    require_once ( plugin_dir_path( __FILE__ ) . 'cm-php/csrest_subscribers.php' );
+}
+else if( CS_REST_WRAPPER_VERSION < '3.1.0') {
+    // check to see if old API is in use
+    define('CMD_OLD_WRAPPER', true);
+}
+
+if( !defined('CMD_OLD_WRAPPER') ){
+    define('CMD_OLD_WRAPPER', false);
+}
 
 if ( ! class_exists ( 'CS_REST_Lists' ) )
-    include_once ( plugin_dir_path( __FILE__ ) . 'cm-php/csrest_lists.php' );
+    require_once ( plugin_dir_path( __FILE__ ) . 'cm-php/csrest_lists.php' );
 
-include_once( plugin_dir_path( __FILE__ ) . 'class-campaign-monitor-dashboard.php' );
+require_once ( plugin_dir_path( __FILE__ ) . 'class-campaign-monitor-dashboard.php' );
 
 // Register hooks that are fired when the plugin is activated, deactivated, and uninstalled, respectively.
 register_activation_hook( __FILE__, array( 'CampaignMonitorDashboard', 'activate' ) );
 register_deactivation_hook( __FILE__, array( 'CampaignMonitorDashboard', 'deactivate' ) );
 
 CampaignMonitorDashboard::get_instance();
+
