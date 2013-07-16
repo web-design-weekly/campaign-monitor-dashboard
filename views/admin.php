@@ -24,9 +24,10 @@
 
 		<div class="old-wrapper">
 			<h2>Hey!</h2>
-			<p>Thanks for taking the time to install this plugin. Unfortunately there is another plugin installed which uses an <b>old</b> version of the Campaign Monitor API. This is causing some conflicting issues.</p>
+			<p>Thanks for taking the time to install this plugin.</p>
+			<p>Unfortunately there is another plugin installed which uses an <b>old</b> version of the Campaign Monitor API. This is causing some conflicting issues.</p>
 			<p>To use this plugin you will need to un-install that plugin.</p>
-			<p>If you would like more details on why this is the case, please don't hesitate to <a href="mailto:support@web-design-weekly.com?Subject=Campaign%20Monitor%20Plugin%20Questions">email</a>.
+			<p>If you would like more details on why this is the case, please don't hesitate to <a href="mailto:support@web-design-weekly.com?Subject=Campaign%20Monitor%20Plugin%20Questions">email</a> me.
 
 		</div>
 
@@ -37,7 +38,8 @@
 		<?php settings_fields( 'option-group' ); ?>
 
 		<a href="#" class="edit-credentials">Edit Credentials</a>
-		<img src="<?php echo admin_url('/images/wpspin_light.gif'); ?>" class="waiting"/>
+
+		<span class="waiting"></span>
 
 		<div class="major-settings">
 
