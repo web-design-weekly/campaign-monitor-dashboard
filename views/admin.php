@@ -58,6 +58,10 @@
 				<a href="https://gist.github.com/jakebresnehan/5992863" target="_blank">Find List ID</a>
 			</p>
 
+			<p class="cm_dashboard_widget_option-wrapper">
+				<input type="checkbox" <?php checked( 'on', get_option('cm_dashboard_widget_option'), true ); ?> class="cm_dashboard_widget_option" id="cm_dashboard_widget_option" name="cm_dashboard_widget_option" /> <label for="cm_dashboard_widget_option">Show as Dashboard Widget</label>
+			</p>
+			
 		</div>
 
 	</form>

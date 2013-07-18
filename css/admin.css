@@ -42,6 +42,11 @@
     padding: 1.5em 0 0;
 }
 
+/* p */.cm_dashboard_widget_option-wrapper {
+	border-top: 2px solid #eee;
+	padding-top: 1.5em;
+}
+		
 .help {
     text-align: right;
     margin-bottom: 0;

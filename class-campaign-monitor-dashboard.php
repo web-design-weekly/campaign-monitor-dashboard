@@ -79,6 +79,11 @@ class CampaignMonitorDashboard {
 
 		// Loads main Campaign Monitor settings panel
 		add_action( 'wp_ajax_get_cm_settings', array( $this, 'process_cm_settings' ) );
+		
+		
+		if ( get_option('cm_dashboard_widget_option') == "on" ) {
+			add_action('wp_dashboard_setup', array( $this, 'add_cm_dashboard_widget' ) );
+		}
 
 	}
 
@@ -200,6 +205,7 @@ class CampaignMonitorDashboard {
 	public function register_settings() {
 		register_setting( 'option-group', 'cm_api_option' );
 		register_setting( 'option-group', 'cm_list_id_option' );
+		register_setting( 'option-group', 'cm_dashboard_widget_option' );
 	}
 
 	/**
@@ -210,6 +216,30 @@ class CampaignMonitorDashboard {
 	public function display_plugin_admin_page() {
 		include_once( 'views/admin.php' );
 	}
+
+
+	/**
+	 * Render the dashboard widget view.
+	 *
+	 * @since    1.0.0
+	 */
+	public function dashboard_widget_view() {
+		include_once( 'views/widget.php' );
+	}
+
+	/**
+	 * Register the dashboard widget.
+	 *
+	 * @since    1.0.0
+	 */
+	public function add_cm_dashboard_widget() {
+		wp_add_dashboard_widget(
+			'cm_dashboard_widget', 
+			'Campaign Monitor', 
+			array( $this, 'dashboard_widget_view' )
+		);	
+	} 
+
 
 	/**
 	 * Main Campaign Monitor settings panel
