@@ -1,38 +1,38 @@
-# Campaign Monitor Dashboard
+=== Campaign Monitor Dashboard ===
 Contributors: jakebresnehan
-Donate link: [web-design-weekly.com/support](http://web-design-weekly.com/support)
+Donate link: http://web-design-weekly.com/support
 Tags: campaign monitor, email, stats
 Requires at least: 3.5.1
 Tested up to: 3.5.2
 Stable tag: 1.0.0
 License: GPLv2 or later
-License URI: [http://www.gnu.org/licenses/gpl-2.0.html](http://www.gnu.org/licenses/gpl-2.0.html)
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Display stats from you Campaign Monitor email list.
 
-## Description
+== Description ==
 
 Spend all day in your WordPress admin and also manage a Campaign Monitor email list? Well this plugin is designed to give you up to date feedback on your list stats.
 
-## Features
+== Features ==
 * Basic Authentication
 * Total Subscribers / Unsubscribers
 * Stats for Today, Yesterday, This Week, This Month, This Year
 
-## Installation
+== Installation ==
 1. Upload `campaign-monitor-dashboard.php` to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Authenticate with Campaign Monitor API Key and List ID
 
-## Frequently Asked Questions
+== Frequently Asked Questions ==
 
-#### Where do I find my API Key?
+= Where do I find my API Key? =
 
 1. Log into your Campaign Monitor account
 2. Click on "Account Settings" in the top menu (4th item)
 3. Your API key will be visible once you click the "Show API Key" link.
 
-#### Where do I find my List ID?
+= Where do I find my List ID? =
 
 1. Log into your Campaign Monitor account
 2. Click on "Clients" in the top menu (1st item)
@@ -42,19 +42,14 @@ Spend all day in your WordPress admin and also manage a Campaign Monitor email l
 6. Just under the name of your list click on the small (change name/type) link.
 7. Your API Subscriber List ID will be now visible
 
-## Screenshots
-1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
-the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets
-directory take precedence. For example, `/assets/screenshot-1.png` would win over `/tags/4.3/screenshot-1.png`
-(or jpg, jpeg, gif).
-2. This is the second screen shot
+== Screenshots ==
+1. Activated Plugin
 
-## Changelog
+== Changelog ==
 
-#### 1.0
+= 1.0 =
 * First version!
 
-
-
-
-
+== Upgrade Notice ==
+= 1.0 =
+Because it rocks!

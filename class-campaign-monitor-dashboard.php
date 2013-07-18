@@ -79,6 +79,7 @@ class CampaignMonitorDashboard {
 
 		// Loads main Campaign Monitor settings panel
 		add_action( 'wp_ajax_get_cm_settings', array( $this, 'process_cm_settings' ) );
+
 	}
 
 	/**
