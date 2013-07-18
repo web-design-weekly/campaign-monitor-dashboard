@@ -200,6 +200,7 @@ class CampaignMonitorDashboard {
 	public function register_settings() {
 		register_setting( 'option-group', 'cm_api_option' );
 		register_setting( 'option-group', 'cm_list_id_option' );
+		register_setting( 'option-group', 'cm_dashboard_widget_option' );
 	}
 
 	/**
