@@ -4,7 +4,7 @@ Donate link: http://web-design-weekly.com/support
 Tags: campaign monitor, email, stats
 Requires at least: 3.5.1
 Tested up to: 3.5.2
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -45,15 +45,27 @@ Spend all day in your WordPress admin and also manage a Campaign Monitor email l
 6. Just under the name of your list click on the small (change name/type) link.
 7. Your API Subscriber List ID will be now visible
 
+= How do I activate the Dashboard Widget =
+
+1. Make sure the checkbox is selected underneath your API and List ID credentials.
+
 == Screenshots ==
 1. Authenticate Plugin
 2. Activated Plugin
+3. Add Dashboard Widget
+4. Dashboard Widget
 
 == Changelog ==
+= 1.1 =
+* Added dashboard widget
 
 = 1.0 =
 * First version!
 
 == Upgrade Notice ==
+
+= 1.1 =
+Added the ability to add a dashbord widget
+
 = 1.0 =
 Because it rocks!
