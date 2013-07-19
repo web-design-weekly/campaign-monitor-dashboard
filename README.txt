@@ -15,12 +15,15 @@ Display stats from you Campaign Monitor email list.
 Spend all day in your WordPress admin and also manage a Campaign Monitor email list? Well this plugin is designed to give you up to date feedback on your list stats.
 
 == Features ==
-* Basic Authentication
 * Total Subscribers / Unsubscribers
-* Stats for Today, Yesterday, This Week, This Month, This Year
+* Stats for Today
+* Yesterday
+* This Week
+* This Month
+* This Year
 
 == Installation ==
-1. Upload `campaign-monitor-dashboard.php` to the `/wp-content/plugins/` directory
+1. Upload this zip file to your `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Authenticate with Campaign Monitor API Key and List ID
 
@@ -43,7 +46,8 @@ Spend all day in your WordPress admin and also manage a Campaign Monitor email l
 7. Your API Subscriber List ID will be now visible
 
 == Screenshots ==
-1. Activated Plugin
+1. Authenticate Plugin
+2. Activated Plugin
 
 == Changelog ==
 

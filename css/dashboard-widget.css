@@ -1,15 +1,3 @@
-#cm_dashboard_widget {
-    background: #fff;
-
-
-
-}
-
-.dashboard-widget {
-/*    background: red;*/
-
-}
-
 #cm_dashboard_widget h4 {
     background: transparent url('../assets/cm-icon-dashboard.png' ) no-repeat -6px -5px;
     color: #444;
