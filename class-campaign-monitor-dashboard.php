@@ -79,8 +79,8 @@ class CampaignMonitorDashboard {
 
 		// Loads main Campaign Monitor settings panel
 		add_action( 'wp_ajax_get_cm_settings', array( $this, 'process_cm_settings' ) );
-		
-		
+
+
 		if ( get_option('cm_dashboard_widget_option') == "on" ) {
 			add_action('wp_dashboard_setup', array( $this, 'add_cm_dashboard_widget' ) );
 		}
@@ -224,7 +224,7 @@ class CampaignMonitorDashboard {
 	 * @since    1.0.0
 	 */
 	public function dashboard_widget_view() {
-		include_once( 'views/widget.php' );
+		include_once( 'views/dashboard-widget.php' );
 	}
 
 	/**
@@ -234,11 +234,15 @@ class CampaignMonitorDashboard {
 	 */
 	public function add_cm_dashboard_widget() {
 		wp_add_dashboard_widget(
-			'cm_dashboard_widget', 
-			'Campaign Monitor', 
+			'cm_dashboard_widget',
+			'Campaign Monitor',
 			array( $this, 'dashboard_widget_view' )
-		);	
-	} 
+		);
+
+		wp_register_style( 'dashboard-widget-style', plugins_url('css/dashboard-widget.css', __FILE__) );
+        wp_enqueue_style( 'dashboard-widget-style' );
+
+	}
 
 
 	/**
