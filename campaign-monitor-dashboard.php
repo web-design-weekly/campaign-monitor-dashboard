@@ -1,24 +1,23 @@
 <?php
-/**
- *
- * @package   CampaignMonitorDashboard
- * @author    Jake Bresnehan <hello@jakebresnehan.com>
- * @license   GPL-2.0+
- * @link      http://web-design-weekly.com
- * @copyright 2013 Jake Bresnehan
- *
- * @wordpress-plugin
- * Plugin Name: Campaign Monitor Dashboard
- * Plugin URI:  http://web-design-weekly.com
- * Description: Display stats from you Campaign Monitor email list.
- * Version:     1.0.5
- * Author:      Jake Bresnehan
- * Author URI:  http://web-design-weekly.com
- * Text Domain: plugin-name-locale
- * License:     GPL-2.0+
- * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
- * Domain Path: /lang
- */
+/*
+@package   CampaignMonitorDashboard
+@author    Jake Bresnehan <hello@jakebresnehan.com>
+@license   GPL-2.0+
+@link      http://web-design-weekly.com
+@copyright 2013 Jake Bresnehan
+
+@wordpress-plugin
+Plugin Name: Campaign Monitor Dashboard
+Plugin URI:  http://web-design-weekly.com
+Description: Display stats from you Campaign Monitor email list.
+Version:     1.0.5
+Author:      Jake Bresnehan
+Author URI:  http://web-design-weekly.com
+Text Domain: plugin-name-locale
+License:     GPL-2.0+
+License URI: http://www.gnu.org/licenses/gpl-2.0.txt
+Domain Path: /lang
+*/
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
