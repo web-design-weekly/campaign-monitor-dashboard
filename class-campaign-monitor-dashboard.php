@@ -67,6 +67,9 @@ class CampaignMonitorDashboard {
 		// Load plugin text domain
 		add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
 
+		// Activate plugin when new blog is added
+		add_action( 'wpmu_new_blog', array( $this, 'activate_new_site' ) );
+
 		// Add the options page and menu item.
 		add_action( 'admin_menu', array( $this, 'add_plugin_admin_menu' ) );
 
@@ -240,7 +243,7 @@ class CampaignMonitorDashboard {
 		);
 
 		wp_register_style( 'dashboard-widget-style', plugins_url('css/dashboard-widget.css', __FILE__) );
-        wp_enqueue_style( 'dashboard-widget-style' );
+		wp_enqueue_style( 'dashboard-widget-style' );
 
 	}
 

@@ -4,7 +4,7 @@ Donate link: http://web-design-weekly.com/support
 Tags: campaign monitor, email, stats
 Requires at least: 3.5.1
 Tested up to: 3.5.2
-Stable tag: 1.0.5
+Stable tag: 1.0.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -79,6 +79,9 @@ Feature requests - [Contact Jake](http://web-design-weekly.com/contact).
 4. Dashboard Widget
 
 == Changelog ==
+
+= 1.0.6 =
+Added action to activate plugin when new multisite blog is added
 
 = 1.0.5 =
 Better Doc's
