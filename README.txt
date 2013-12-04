@@ -4,7 +4,7 @@ Donate link: http://web-design-weekly.com/support
 Tags: campaign monitor, email, stats
 Requires at least: 3.5.1
 Tested up to: 3.7.1
-Stable tag: 1.0.7
+Stable tag: 1.0.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -80,6 +80,9 @@ Feature requests - [Contact Jake](http://web-design-weekly.com/contact).
 
 == Changelog ==
 
+= 1.0.8 =
+Readme
+
 = 1.0.7 =
 Readme
 
@@ -105,6 +108,9 @@ Better Doc's
 * First version!
 
 == Upgrade Notice ==
+
+= 1.0.8 =
+Readme
 
 = 1.0.7 =
 Readme tweaks
