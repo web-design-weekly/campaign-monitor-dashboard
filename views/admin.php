@@ -42,7 +42,6 @@
 
 	<ul class="nav-tab-wrapper">
 		<li><h2><a class="nav-tab" href="#stats"><?php _e('Your Stats','campaign-monitor-dashboard'); ?></a></h2></li>
-		<li><h2><a class="nav-tab" href="#graphs"><?php _e('Graphs','campaign-monitor-dashboard'); ?></a></h2></li>
 		<li><h2><a class="nav-tab" href="#shortcode"><?php _e('Shortcode','campaign-monitor-dashboard'); ?></a></h2></li>
 		<li><h2><a class="nav-tab" href="#support"><?php _e('Support','campaign-monitor-dashboard'); ?></a></h2></li>
 	</ul>
@@ -90,51 +89,48 @@
 		</div>
 	</div>
 
-	<div id="graphs">
-		<div class="settings-field">
-			<div class="inside">
-				Graphs
-			</div>
-		</div>
-	</div>
-
 	<div id="shortcode">
 		<div class="settings-field">
 			<div class="inside">
 
 				<h3>Adding Forms To Your Site</h3>
 
-				<p>Once you have entered your correct Campaign Monitor credentials you can add forms to any of your posts or pages with a simple shortcode.</p>
+				<p>Once you have entered your correct Campaign Monitor credentials you can add sign up forms to any of your posts or pages with a simple shortcode.</p>
 
 				<p><strong>Shortcode:</strong> <code>[emailform]</code></p>
 
 				<h3>Shortcode Options</h3>
 
-				<p>The shortcode come built with 2 options:</p>
+				<p>The shortcode come built with 4 options:</p>
 					<ul>
 						<li><strong>— Title</strong></li>
 						<li><strong>— Subtitle</strong></li>
+						<li><strong>— Thanks</strong></li>
+						<li><strong>— Redirect</strong></li>
 					</ul>
 
-				<p>To custormise the output of you email signup for all you need to do is give the title and/or subtitle options your desired text.</p>
+				<p>To custormise the output of you email sign up form all you need to do is give any of the options your desired value.</p>
 
-				<p><code>[emailform title="<strong>YOUR TITLE</strong>" subtitle="<strong>YOUR SUBTITLE</strong>"]</code></p>
+				<p><small>Note: Your thank you message will only be displayed if you do not provide a redirect.</small></p>
 
-				<p>Like so:</p>
+				<p><code>[emailform title="<strong>YOUR TITLE</strong>" subtitle="<strong>YOUR SUBTITLE</strong>" redirect="<strong>http://yoursite.com</strong>"] thanks="<strong>YOUR THANK YOU MESSAGE</strong>"]</code></p>
 
-				<p><code>[emailform title="Get the newsletter!" subtitle="A once a week email with just pure awesome links to the best news and articles about web design."]</code></p>
+				<p>If you do not want the default output, just declare the option with a blank value.</p>
 
-				<h3>Variations</h3>
+				<p>Like so: <code>[emailform <strong>OPTION</strong>=""]</code></p>
 
-				<p><strong>Default:</strong> <code>[emailform]</code></p>
+				<h3>Customising With CSS</h3>
+				<p>The Campaign Monitor Dashboard shortcode form doesn't come with any styles. If you would like to custormise the look, you can simply just use the following CSS classes in your stylesheet.</p>
 
-				<p><strong>No Title, No Subtitle:</strong> <code>[emailform title="" subtitle=""]</code></p>
+				<p><code>.cmpost-signup { /* Wraps entire form */ }</code></p>
 
-				<p><strong>No Subtitle:</strong> <code>[emailform title="This is the title" subtitle=""]</code></p>
+				<p><code>.cmpost-signup h3 { /* Title styles */ }</code></p>
 
-				<p><strong>No Title:</strong> <code>[emailform title="" subtitle="This is the sutbtitle"]</code>
+				<p><code>.cmpost-signup p { /* Subtitle styles */ }</code></p>
 
-				<p><strong>Title and Subtitle:</strong> <code>[emailform title="This is the title" subtitle="This is the sutbtitle"]</code></p>
+				<p><code>.cmpost-signup input[type="email"] { /* Email input styles */ }</code></p>
+
+				<p><code>.cmpost-signup input[type="submit"] { /* Submit button styles */ }</code></p>
 
 			</div>
 		</div>

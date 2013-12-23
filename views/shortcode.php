@@ -4,7 +4,7 @@
 // displays the campaign_monitor signup form
  function campaign_monitor_form($redirect, $title, $subtitle, $thanks) {
  	if(strlen(trim($thanks)) <= 0) {
-		$subtitle = __('You have been successfully subscribed', 'pcm');
+		$subtitle = __('You have been successfully subscribed', 'campaign-monitor-dashboard');
 	}
 	if(strlen(trim($redirect)) <= 0) {
 		if (is_singular()) :
@@ -19,21 +19,20 @@
 	}
 	ob_start();
 		if(isset($_GET['submitted']) && $_GET['submitted'] == '1') {
-			echo '<div id="cmpost-signup"><h3>' . $thanks . '</h3></div>';
+			echo '<div class="cmpost-signup"><h3>' . $thanks . '</h3></div>';
 		} else {
 			if(strlen(trim(get_option('cm_api_option'))) > 0 ) { ?>
-			<div id="cmpost-signup">
+			<div class="cmpost-signup">
 				<h3><?php echo($title); ?></h3>
 				<p><?php echo($subtitle); ?></p>
 			<form id="" action="" method="post">
 
-					<input name="campaign_monitor_email" id="campaign_monitor_email" type="email" placeholder="Email Address"/>
-
+					<input name="campaign-monitor-email" type="email" placeholder="Email Address"/>
 
 					<input type="hidden" name="action" value="signup"/>
 					<input type="hidden" name="redirect" value="<?php echo $redirect; ?>">
 
-					<input type="submit" value="Sign Up" onclick="_gaq.push(['_trackEvent', 'Subscribe actions', 'Subscribe', 'Subscribe — End of post']);" />
+					<input type="submit" value="Sign Up" />
 
 			</form>
 			</div>
@@ -56,7 +55,7 @@ function do_output_buffer() {
 
 	/**
 	 * Register the shortcode
-	 * [bartag foo="foo-value"]
+	 * [emailform redirect="foo-value" title="foo-value" subtitle="foo-value" thanks="foo-value"]
 	 * @since    1.0.0
 	 */
 	 function campaigntag_code( $atts, $content = null ) {
@@ -64,7 +63,7 @@ function do_output_buffer() {
 		extract( shortcode_atts( array(
 			'redirect' => '',
 			'title' => 'Sign up to our newsletter',
-			'subtitle' => 'Receive awesome updates on a regular basis.',
+			'subtitle' => 'Receive updates on a regular basis.',
 			'thanks' => 'Thanks for subscribing!'
 		), $atts ) );
 
