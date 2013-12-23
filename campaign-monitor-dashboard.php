@@ -9,7 +9,7 @@
 @wordpress-plugin
 Plugin Name: Campaign Monitor Dashboard
 Plugin URI:  http://web-design-weekly.com
-Description: Display stats from your Campaign Monitor email list.
+Description: Display stats from your Campaign Monitor email list and easily add sign up forms to your site.
 Version:     1.0.9
 Author:      Jake Bresnehan
 Author URI:  http://web-design-weekly.com

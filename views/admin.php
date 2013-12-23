@@ -113,7 +113,7 @@
 
 				<p><small>Note: Your thank you message will only be displayed if you do not provide a redirect.</small></p>
 
-				<p><code>[emailform title="<strong>YOUR TITLE</strong>" subtitle="<strong>YOUR SUBTITLE</strong>" redirect="<strong>http://yoursite.com</strong>"] thanks="<strong>YOUR THANK YOU MESSAGE</strong>"]</code></p>
+				<p><code>[emailform title="<strong>YOUR TITLE</strong>" subtitle="<strong>YOUR SUBTITLE</strong>" redirect="<strong>http://yoursite.com</strong>" thanks="<strong>YOUR THANK YOU MESSAGE</strong>"]</code></p>
 
 				<p>If you do not want the default output, just declare the option with a blank value.</p>
 

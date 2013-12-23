@@ -7,9 +7,8 @@
 
 .nav-tab-wrapper {
 	border-bottom: solid 1px #CCC;
-	width: 99%;
+	width: 100%;
 	display: inline-block;
-	padding-left: 1%;
 }
 
 .ui-tabs-active .nav-tab {
@@ -43,6 +42,7 @@
 
 .settings-field {
 	width: 50%;
+	display: none;
 }
 
 /* loading spinner */

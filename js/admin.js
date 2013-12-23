@@ -5,6 +5,10 @@
 
 		jQuery("#tabs").tabs();
 
+		// To handle slow loading of JS :D
+		jQuery(".settings-field").css('display','block');
+
+
 	});
 
 
