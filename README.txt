@@ -3,8 +3,8 @@ Contributors: jakebresnehan
 Donate link: http://web-design-weekly.com/support
 Tags: campaign monitor, email, stats
 Requires at least: 3.5.1
-Tested up to: 3.7.1
-Stable tag: 1.0.8
+Tested up to: 3.8
+Stable tag: 1.0.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,7 +30,7 @@ Features of the plugin include:
 
 [youtube http://www.youtube.com/watch?v=vX3C-ps1jBc]
 
-Feature requests - [Contact Jake](http://web-design-weekly.com/contact).
+[Plugin Support & Feature requests] (http://web-design-weekly.com/support/forums/forum/campaign-monitor-dashboard-plugin/).
 
 == Features ==
 * Total Subscribers / Unsubscribers
@@ -64,7 +64,7 @@ Feature requests - [Contact Jake](http://web-design-weekly.com/contact).
 2. Click on "Clients" in the top menu (1st item)
 3. Select your Client
 4. Navigate to the "List & Subscribers" tab
-5. Slelect your List
+5. Select your List
 6. Just under the name of your list click on the small (change name/type) link.
 7. Your API Subscriber List ID will be now visible
 
@@ -79,6 +79,14 @@ Feature requests - [Contact Jake](http://web-design-weekly.com/contact).
 4. Dashboard Widget
 
 == Changelog ==
+
+= 1.0.9 =
+Added shortcode signup forms
+Change plugin options page to be in the admin options menu
+Removed multisite activation
+Added settings link to plugins page
+Added support link to plugins page
+Adjusted wording of authentication UI
 
 = 1.0.8 =
 Readme

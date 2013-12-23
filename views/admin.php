@@ -16,6 +16,8 @@
 <div class="wrap">
 
 	<?php screen_icon( 'cm_icon' ); ?>
+	<img class="cm-icon" src="<?php echo plugins_url( 'assets/cm-icon.png' , dirname(__FILE__) ); ?>" alt="<?php _e('Campaign Monitor Dashboard','CampaignMonitorDashboard'); ?>" />
+
 	<h2><?php echo esc_html( get_admin_page_title() ); ?></h2>
 
 	<?php
@@ -34,40 +36,128 @@
 		<?php
 		} else {
 	?>
-	<form class="settings-form" method="post" action="options.php">
-		<?php settings_fields( 'option-group' ); ?>
 
-		<a href="#" class="edit-credentials">Edit Credentials</a>
 
-		<span class="waiting"></span>
+<div id="tabs">
 
-		<div class="major-settings">
+	<ul class="nav-tab-wrapper">
+		<li><h2><a class="nav-tab" href="#stats"><?php _e('Your Stats','campaign-monitor-dashboard'); ?></a></h2></li>
+		<li><h2><a class="nav-tab" href="#graphs"><?php _e('Graphs','campaign-monitor-dashboard'); ?></a></h2></li>
+		<li><h2><a class="nav-tab" href="#shortcode"><?php _e('Shortcode','campaign-monitor-dashboard'); ?></a></h2></li>
+		<li><h2><a class="nav-tab" href="#support"><?php _e('Support','campaign-monitor-dashboard'); ?></a></h2></li>
+	</ul>
 
-			<p>API</p>
-			<input type="text" class="cm_api_option" name="cm_api_option" size="34" value="<?php echo get_option('cm_api_option'); ?>" />
 
-			<p>List ID</p>
-			<input type="text" class="cm_list_id_option" name="cm_list_id_option" size="34" value="<?php echo get_option('cm_list_id_option'); ?>" />
+	<div id="stats">
+		<div class="settings-field">
+			<div class="inside">
 
-			<p class="submit">
-			<input type="submit" class="button-primary cm-settings-button" value="<?php _e('Save Changes') ?>" />
-			</p>
+			<form class="settings-form" method="post" action="options.php">
+				<?php settings_fields( 'option-group' ); ?>
 
-			<p class="help">
-				<a href="https://gist.github.com/jakebresnehan/5992863" target="_blank">Find API Key</a>
-				<a href="https://gist.github.com/jakebresnehan/5992863" target="_blank">Find List ID</a>
-			</p>
+				<a href="#" class="edit-credentials">Edit Credentials</a>
 
-			<p class="cm_dashboard_widget_option-wrapper">
-				<input type="checkbox" <?php checked( 'on', get_option('cm_dashboard_widget_option'), true ); ?> class="cm_dashboard_widget_option" id="cm_dashboard_widget_option" name="cm_dashboard_widget_option" /> <label for="cm_dashboard_widget_option">Show as Dashboard Widget</label>
-			</p>
-			
+				<span class="waiting"></span>
+
+				<div class="major-settings">
+
+					<p>API</p>
+					<input type="text" class="cm_api_option" name="cm_api_option" size="34" value="<?php echo get_option('cm_api_option'); ?>" />
+
+					<p>List ID</p>
+					<input type="text" class="cm_list_id_option" name="cm_list_id_option" size="34" value="<?php echo get_option('cm_list_id_option'); ?>" />
+
+					<p class="submit">
+					<input type="submit" class="button-primary cm-settings-button" value="<?php _e('Save Changes') ?>" />
+					</p>
+
+					<p class="help">
+						<a href="https://gist.github.com/jakebresnehan/5992863" target="_blank">Find API Key</a>
+						<a href="https://gist.github.com/jakebresnehan/5992863" target="_blank">Find List ID</a>
+					</p>
+
+					<p class="cm_dashboard_widget_option-wrapper">
+						<input type="checkbox" <?php checked( 'on', get_option('cm_dashboard_widget_option'), true ); ?> class="cm_dashboard_widget_option" id="cm_dashboard_widget_option" name="cm_dashboard_widget_option" /> <label for="cm_dashboard_widget_option">Show as Dashboard Widget</label>
+					</p>
+
+				</div>
+
+			</form>
+
+				<div id="cm-stats"></div>
+
+			</div>
 		</div>
+	</div>
 
-	</form>
+	<div id="graphs">
+		<div class="settings-field">
+			<div class="inside">
+				Graphs
+			</div>
+		</div>
+	</div>
+
+	<div id="shortcode">
+		<div class="settings-field">
+			<div class="inside">
+
+				<h3>Adding Forms To Your Site</h3>
+
+				<p>Once you have entered your correct Campaign Monitor credentials you can add forms to any of your posts or pages with a simple shortcode.</p>
+
+				<p><strong>Shortcode:</strong> <code>[emailform]</code></p>
+
+				<h3>Shortcode Options</h3>
+
+				<p>The shortcode come built with 2 options:</p>
+					<ul>
+						<li><strong>— Title</strong></li>
+						<li><strong>— Subtitle</strong></li>
+					</ul>
+
+				<p>To custormise the output of you email signup for all you need to do is give the title and/or subtitle options your desired text.</p>
+
+				<p><code>[emailform title="<strong>YOUR TITLE</strong>" subtitle="<strong>YOUR SUBTITLE</strong>"]</code></p>
+
+				<p>Like so:</p>
+
+				<p><code>[emailform title="Get the newsletter!" subtitle="A once a week email with just pure awesome links to the best news and articles about web design."]</code></p>
+
+				<h3>Variations</h3>
+
+				<p><strong>Default:</strong> <code>[emailform]</code></p>
+
+				<p><strong>No Title, No Subtitle:</strong> <code>[emailform title="" subtitle=""]</code></p>
+
+				<p><strong>No Subtitle:</strong> <code>[emailform title="This is the title" subtitle=""]</code></p>
+
+				<p><strong>No Title:</strong> <code>[emailform title="" subtitle="This is the sutbtitle"]</code>
+
+				<p><strong>Title and Subtitle:</strong> <code>[emailform title="This is the title" subtitle="This is the sutbtitle"]</code></p>
+
+			</div>
+		</div>
+	</div>
 
 
-	<div id="cm-stats"></div>
+	<div id="support">
+		<div class="settings-field">
+			<div class="inside">
+				<h3>Need Help?</h3>
+				<p>If for some reason you need help or have a feature request, please don't hesitate to submit a request on the dedicated support forum.</p>
+
+				<p><a href="http://web-design-weekly.com/support/forums/forum/campaign-monitor-dashboard-plugin/" alt="Support Forum">Support Forum &rarr;</a></p>
+
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+
+
 <?php
-}
+	}
 ?>

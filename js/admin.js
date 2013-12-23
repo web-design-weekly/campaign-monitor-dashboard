@@ -1,5 +1,13 @@
 (function (jQuery) {
 
+
+	jQuery(document).ready(function( $ ) {
+
+		jQuery("#tabs").tabs();
+
+	});
+
+
 jQuery(window).bind("load", function() {
 
 	var cm_api_settings = jQuery('.cm_api_option').val(),
@@ -25,8 +33,21 @@ jQuery(window).bind("load", function() {
 
 	jQuery('.edit-credentials').click(function () {
 		jQuery('.major-settings').toggle();
+		jQuery('.edit-credentials').toggleClass('on');
+		toggleText();
 	});
 
 });
+
+
+function toggleText () {
+
+	if (jQuery('.edit-credentials').hasClass('on')) {
+		jQuery('.edit-credentials').text('Hide Credentials');
+	} else {
+		jQuery('.edit-credentials').text('Edit Credentials');
+	}
+
+}
 
 }(jQuery));

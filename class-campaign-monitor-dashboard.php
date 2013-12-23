@@ -67,9 +67,6 @@ class CampaignMonitorDashboard {
 		// Load plugin text domain
 		add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
 
-		// Activate plugin when new blog is added
-		add_action( 'wpmu_new_blog', array( $this, 'activate_new_site' ) );
-
 		// Add the options page and menu item.
 		add_action( 'admin_menu', array( $this, 'add_plugin_admin_menu' ) );
 
@@ -87,6 +84,13 @@ class CampaignMonitorDashboard {
 		if ( get_option('cm_dashboard_widget_option') == "on" ) {
 			add_action('wp_dashboard_setup', array( $this, 'add_cm_dashboard_widget' ) );
 		}
+
+		// Adds settings link to plugins page
+		$plugin_file = 'campaign-monitor-dashboard/campaign-monitor-dashboard.php';
+		add_filter( 'plugin_action_links_' . $plugin_file, array( $this, 'my_plugin_action_links' ) );
+
+		// Loads shortcode file
+		add_action( 'after_setup_theme', array( $this, 'campaigntag_view' ) );
 
 	}
 
@@ -106,6 +110,8 @@ class CampaignMonitorDashboard {
 
 		return self::$instance;
 	}
+
+
 
 	/**
 	 * Fired when the plugin is activated.
@@ -179,6 +185,10 @@ class CampaignMonitorDashboard {
 		$screen = get_current_screen();
 		if ( $screen->id == $this->plugin_screen_hook_suffix ) {
 			wp_enqueue_script( $this->plugin_slug . '-admin-script', plugins_url( 'js/admin.js', __FILE__ ), array( 'jquery' ), $this->version );
+
+			//UI Tabs
+			wp_enqueue_script( 'jquery-ui-tabs' );
+
 		}
 
 	}
@@ -189,7 +199,7 @@ class CampaignMonitorDashboard {
 	 * @since    1.0.0
 	 */
 	public function add_plugin_admin_menu() {
-		$this->plugin_screen_hook_suffix = add_plugins_page(
+		$this->plugin_screen_hook_suffix = add_options_page(
 			__( 'Campaign Monitor Dashboard', $this->plugin_slug ),
 			__( 'Campaign Monitor', $this->plugin_slug ),
 			'read',
@@ -198,6 +208,20 @@ class CampaignMonitorDashboard {
 		);
 
 	}
+
+	/**
+	 * Add settings link on plugins.php
+	 *
+	 * @since    1.0.9
+	 */
+
+	public function my_plugin_action_links( $links ) {
+		$links[] = '<a href="'. get_admin_url(null, 'options-general.php?page=campaign-monitor-dashboard') .'">Settings</a>';
+		$links[] = '<a href="http://web-design-weekly.com/support/" target="_blank">Support</a>';
+
+		return $links;
+	}
+
 
 	/**
 	 * Registers the settings for this plugin.
@@ -330,5 +354,15 @@ class CampaignMonitorDashboard {
 
 		die();
 	}
+
+	/**
+	 * Render the shortcode
+	 *
+	 * @since    1.0.9
+	 */
+	public function campaigntag_view() {
+		include_once( 'views/shortcode.php' );
+	}
+
 
 }
