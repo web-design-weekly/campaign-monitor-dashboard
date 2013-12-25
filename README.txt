@@ -8,13 +8,14 @@ Stable tag: 1.0.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Display stats from your Campaign Monitor email list right in the dashboard.
+
+Quickly add Campaign Monitor email forms to your site and display stats right in the dashboard.
 
 == Description ==
 
 **Spend all day in your WordPress admin and also manage a Campaign Monitor email list?**
 
-Well, this plugin is designed to give you up-to-date feedback on your list stats without having to leave the WordPress admin.
+This plugin can easily add Campaign Monitor email forms to your posts or pages with a simple shortcode and also give you up-to-date feedback on your list stats without having to leave the WordPress admin.
 
 Features of the plugin include:
 
@@ -25,6 +26,8 @@ Features of the plugin include:
 * This Month
 * This Year
 * Dedicated Dashboard Widget
+* Sign up Form
+* Useful Shortcodes
 
 **Getting setup with the plugin**
 
@@ -40,6 +43,8 @@ Features of the plugin include:
 * This Month
 * This Year
 * Dashboard Widget
+* Sign up Form
+* Useful Shortcodes
 
 == Installation ==
 1. Upload this zip file to your `/wp-content/plugins/` directory
@@ -87,6 +92,8 @@ Removed multisite activation
 Added settings link to plugins page
 Added support link to plugins page
 Adjusted wording of authentication UI
+Adding forms to your Sste with shortcode
+Added total subscribers shortcode
 
 = 1.0.8 =
 Readme
@@ -116,6 +123,16 @@ Better Doc's
 * First version!
 
 == Upgrade Notice ==
+
+= 1.0.9 =
+Added shortcode signup forms
+Change plugin options page to be in the admin options menu
+Removed multisite activation
+Added settings link to plugins page
+Added support link to plugins page
+Adjusted wording of authentication UI
+Adding forms to your Sste with shortcode
+Added total subscribers shortcode
 
 = 1.0.8 =
 Readme

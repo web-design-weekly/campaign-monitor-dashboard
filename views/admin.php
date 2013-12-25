@@ -42,7 +42,7 @@
 
 	<ul class="nav-tab-wrapper">
 		<li><h2><a class="nav-tab" href="#stats"><?php _e('Your Stats','campaign-monitor-dashboard'); ?></a></h2></li>
-		<li><h2><a class="nav-tab" href="#shortcode"><?php _e('Shortcode','campaign-monitor-dashboard'); ?></a></h2></li>
+		<li><h2><a class="nav-tab" href="#shortcodes"><?php _e('Shortcodes','campaign-monitor-dashboard'); ?></a></h2></li>
 		<li><h2><a class="nav-tab" href="#support"><?php _e('Support','campaign-monitor-dashboard'); ?></a></h2></li>
 	</ul>
 
@@ -89,17 +89,26 @@
 		</div>
 	</div>
 
-	<div id="shortcode">
+	<div id="shortcodes">
 		<div class="settings-field">
 			<div class="inside">
 
-				<h3>Adding Forms To Your Site</h3>
+				<p>The Campaign Monitor Dashboard plugin has a few easy shortcodes for your convenience.</p>
+
+				<p><strong>Email Form Shortcode:</strong> <code>[cm_email_form]</code></p>
+
+				<p><strong>Total Subscribers Shortcode:</strong> <code>[cm_total_subscribers]</code></p>
+
+
+				<hr>
+
+				<h3>Email Form Shortcode</h3>
 
 				<p>Once you have entered your correct Campaign Monitor credentials you can add sign up forms to any of your posts or pages with a simple shortcode.</p>
 
-				<p><strong>Shortcode:</strong> <code>[emailform]</code></p>
+				<p><code>[cm_email_form]</code></p>
 
-				<h3>Shortcode Options</h3>
+				<h4>Shortcode Options</h4>
 
 				<p>The shortcode come built with 4 options:</p>
 					<ul>
@@ -113,24 +122,32 @@
 
 				<p><small>Note: Your thank you message will only be displayed if you do not provide a redirect.</small></p>
 
-				<p><code>[emailform title="<strong>YOUR TITLE</strong>" subtitle="<strong>YOUR SUBTITLE</strong>" redirect="<strong>http://yoursite.com</strong>" thanks="<strong>YOUR THANK YOU MESSAGE</strong>"]</code></p>
+				<p><code>[cm_email_form title="<strong>YOUR TITLE</strong>" subtitle="<strong>YOUR SUBTITLE</strong>" redirect="<strong>http://yoursite.com</strong>" thanks="<strong>YOUR THANK YOU MESSAGE</strong>"]</code></p>
 
 				<p>If you do not want the default output, just declare the option with a blank value.</p>
 
-				<p>Like so: <code>[emailform <strong>OPTION</strong>=""]</code></p>
+				<p>Like so: <code>[cm_email_form <strong>OPTION</strong>=""]</code></p>
 
-				<h3>Customising With CSS</h3>
+				<h4>Customising With CSS</h4>
 				<p>The Campaign Monitor Dashboard shortcode form doesn't come with any styles. If you would like to custormise the look, you can simply just use the following CSS classes in your stylesheet.</p>
 
-				<p><code>.cmpost-signup { /* Wraps entire form */ }</code></p>
+				<p><code>.cm-signup { /* Wraps entire form */ }</code></p>
 
-				<p><code>.cmpost-signup h3 { /* Title styles */ }</code></p>
+				<p><code>.cm-signup h3 { /* Title styles */ }</code></p>
 
-				<p><code>.cmpost-signup p { /* Subtitle styles */ }</code></p>
+				<p><code>.cm-signup p { /* Subtitle styles */ }</code></p>
 
-				<p><code>.cmpost-signup input[type="email"] { /* Email input styles */ }</code></p>
+				<p><code>.cm-signup input[type="email"] { /* Email input styles */ }</code></p>
 
-				<p><code>.cmpost-signup input[type="submit"] { /* Submit button styles */ }</code></p>
+				<p><code>.cm-signup input[type="submit"] { /* Submit button styles */ }</code></p>
+
+				<hr>
+
+				<h3>Total Subscribers Shortcode</h3>
+
+				<p>To output the total number of subscribers to your Campaign Monitor list, just use the following handy shortcode.</p>
+
+				<p><code>[cm_total_subscribers]</code></p>
 
 			</div>
 		</div>
@@ -150,8 +167,6 @@
 	</div>
 
 </div>
-
-
 
 
 <?php

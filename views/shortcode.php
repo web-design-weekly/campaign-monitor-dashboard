@@ -19,15 +19,15 @@
 	}
 	ob_start();
 		if(isset($_GET['submitted']) && $_GET['submitted'] == '1') {
-			echo '<div class="cmpost-signup"><h3>' . $thanks . '</h3></div>';
+			echo '<div class="cm-signup"><h3>' . $thanks . '</h3></div>';
 		} else {
 			if(strlen(trim(get_option('cm_api_option'))) > 0 ) { ?>
-			<div class="cmpost-signup">
+			<div class="cm-signup">
 				<h3><?php echo($title); ?></h3>
 				<p><?php echo($subtitle); ?></p>
-			<form id="" action="" method="post">
+			<form action="" method="post">
 
-					<input name="campaign-monitor-email" type="email" placeholder="Email Address"/>
+					<input name="campaign-monitor-email" class="campaign-monitor-email" type="email" placeholder="Email Address"/>
 
 					<input type="hidden" name="action" value="signup"/>
 					<input type="hidden" name="redirect" value="<?php echo $redirect; ?>">
@@ -49,13 +49,13 @@
 //fixes the redirect issue
 add_action('init', 'do_output_buffer');
 function do_output_buffer() {
-        ob_start();
+	ob_start();
 }
 
 
 	/**
 	 * Register the shortcode
-	 * [emailform redirect="foo-value" title="foo-value" subtitle="foo-value" thanks="foo-value"]
+	 * [cmemailform redirect="foo-value" title="foo-value" subtitle="foo-value" thanks="foo-value"]
 	 * @since    1.0.0
 	 */
 	 function campaigntag_code( $atts, $content = null ) {
@@ -74,7 +74,7 @@ function do_output_buffer() {
 		return campaign_monitor_form($redirect, $title, $subtitle, $thanks);
 	}
 
-add_shortcode( 'emailform', 'campaigntag_code' );
+add_shortcode( 'cm_email_form', 'campaigntag_code' );
 
 
 
@@ -136,6 +136,39 @@ add_action('init', 'check_for_email_signup');
 
 		return false;
 	}
+
+
+
+
+
+	/**
+	 * Register the shortcode
+	 * [cmtotalsubscribers]
+	 * @since    1.0.0
+	 */
+
+function campaigntag_totalsubs( $atts ){
+
+	$cm_api = get_option('cm_api_option');
+	$cm_list = get_option('cm_list_id_option');
+
+	$auth = array('api_key' => $cm_api);
+	$wrap = new CS_REST_Lists($cm_list, $auth);
+
+	$result = $wrap->get();
+	$stats_result = $wrap->get_stats();
+
+	if($result->was_successful()) {
+
+		$total_active_subscribers = $stats_result->response->TotalActiveSubscribers;
+	}
+
+	return $total_active_subscribers;
+}
+add_shortcode( 'cm_total_subscribers', 'campaigntag_totalsubs' );
+
+
+
 
 
 ?>
