@@ -84,14 +84,8 @@ function check_for_email_signup() {
 	// only proceed with this function if we are posting from our email subscribe form
 	if(isset($_POST['action']) && $_POST['action'] == 'signup') {
 
-<<<<<<< HEAD
-
 		// setup the email varaible
 		$email = strip_tags($_POST['campaign-monitor-email']);
-=======
-		// setup the email varaible
-		$email = strip_tags($_POST['campaign_monitor_email']);
->>>>>>> a3e197f4e7949b2a482230a1f1b4a3b7479cb4c5
 
 		 echo "$email";
 
