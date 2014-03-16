@@ -4,7 +4,7 @@ Donate link: http://web-design-weekly.com/support
 Tags: campaign monitor, email, stats
 Requires at least: 3.5.1
 Tested up to: 3.8
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -33,7 +33,7 @@ Features of the plugin include:
 
 [youtube http://www.youtube.com/watch?v=vX3C-ps1jBc]
 
-[Plugin Support & Feature requests] (http://web-design-weekly.com/support/forums/forum/campaign-monitor-dashboard-plugin/).
+[Plugin Support & Feature requests](http://web-design-weekly.com/support/).
 
 == Features ==
 * Total Subscribers / Unsubscribers
@@ -85,6 +85,9 @@ Features of the plugin include:
 
 == Changelog ==
 
+= 1.1.1 =
+Fix — Support link reference
+
 = 1.1.0 =
 Fix — Invalid email on form submission
 
@@ -126,6 +129,9 @@ Better Doc's
 * First version!
 
 == Upgrade Notice ==
+
+= 1.1.1 =
+Fix — Support link reference
 
 = 1.1.0 =
 Fix — Invalid email on form submission

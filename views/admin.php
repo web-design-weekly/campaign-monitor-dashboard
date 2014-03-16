@@ -160,7 +160,7 @@
 				<h3>Need Help?</h3>
 				<p>If for some reason you need help or have a feature request, please don't hesitate to submit a request on the dedicated support forum.</p>
 
-				<p><a href="http://web-design-weekly.com/support/forums/forum/campaign-monitor-dashboard-plugin/" alt="Support Forum">Support Forum &rarr;</a></p>
+				<p><a href="http://web-design-weekly.com/support/" alt="Support Forum">Support Forum &rarr;</a></p>
 
 			</div>
 		</div>

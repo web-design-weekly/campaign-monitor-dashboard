@@ -212,12 +212,12 @@ class CampaignMonitorDashboard {
 	/**
 	 * Add settings link on plugins.php
 	 *
-	 * @since    1.0.9
+	 * @since    1.1.1
 	 */
 
 	public function my_plugin_action_links( $links ) {
 		$links[] = '<a href="'. get_admin_url(null, 'options-general.php?page=campaign-monitor-dashboard') .'">Settings</a>';
-		$links[] = '<a href="http://web-design-weekly.com/support/forums/forum/campaign-monitor-dashboard-plugin/" target="_blank">Support</a>';
+		$links[] = '<a href="http://web-design-weekly.com/support/" target="_blank">Support</a>';
 
 		return $links;
 	}
