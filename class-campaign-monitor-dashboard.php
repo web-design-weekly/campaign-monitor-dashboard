@@ -25,7 +25,7 @@ class CampaignMonitorDashboard {
 	 *
 	 * @var     string
 	 */
-	protected $version = '1.0.0';
+	protected $version = '1.1.2';
 
 	/**
 	 * Unique identifier for your plugin.
@@ -79,7 +79,6 @@ class CampaignMonitorDashboard {
 
 		// Loads main Campaign Monitor settings panel
 		add_action( 'wp_ajax_get_cm_settings', array( $this, 'process_cm_settings' ) );
-
 
 		if ( get_option('cm_dashboard_widget_option') == "on" ) {
 			add_action('wp_dashboard_setup', array( $this, 'add_cm_dashboard_widget' ) );
@@ -194,18 +193,21 @@ class CampaignMonitorDashboard {
 	}
 
 	/**
-	 * Register the administration menu into the WordPress Dashboard menu.
+	 * Register the administration menu into the WordPress Dashboard menu only if the user can manage options.
 	 *
-	 * @since    1.0.0
+	 * @since    1.1.2
 	 */
 	public function add_plugin_admin_menu() {
-		$this->plugin_screen_hook_suffix = add_options_page(
-			__( 'Campaign Monitor Dashboard', $this->plugin_slug ),
-			__( 'Campaign Monitor', $this->plugin_slug ),
-			'read',
-			$this->plugin_slug,
-			array( $this, 'display_plugin_admin_page' )
-		);
+
+		if (current_user_can( 'manage_options' )) {
+			$this->plugin_screen_hook_suffix = add_options_page(
+				__( 'Campaign Monitor Dashboard', $this->plugin_slug ),
+				__( 'Campaign Monitor', $this->plugin_slug ),
+				'read',
+				$this->plugin_slug,
+				array( $this, 'display_plugin_admin_page' )
+			);
+		}
 
 	}
 
@@ -246,28 +248,31 @@ class CampaignMonitorDashboard {
 
 
 	/**
-	 * Render the dashboard widget view.
+	 * Render the dashboard widget view
 	 *
 	 * @since    1.0.0
 	 */
 	public function dashboard_widget_view() {
-		include_once( 'views/dashboard-widget.php' );
+			include_once( 'views/dashboard-widget.php' );
 	}
 
 	/**
-	 * Register the dashboard widget.
+	 * Register the dashboard widget only for users that can manage options
 	 *
-	 * @since    1.0.0
+	 * @since    1.1.2
 	 */
 	public function add_cm_dashboard_widget() {
-		wp_add_dashboard_widget(
-			'cm_dashboard_widget',
-			'Campaign Monitor',
-			array( $this, 'dashboard_widget_view' )
-		);
 
-		wp_register_style( 'dashboard-widget-style', plugins_url('css/dashboard-widget.css', __FILE__) );
-		wp_enqueue_style( 'dashboard-widget-style' );
+		if (current_user_can( 'manage_options' )) {
+			wp_add_dashboard_widget(
+				'cm_dashboard_widget',
+				'Campaign Monitor',
+				array( $this, 'dashboard_widget_view' )
+			);
+
+			wp_register_style( 'dashboard-widget-style', plugins_url('css/dashboard-widget.css', __FILE__) );
+			wp_enqueue_style( 'dashboard-widget-style' );
+		}
 
 	}
 
