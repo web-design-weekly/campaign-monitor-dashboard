@@ -4,7 +4,7 @@ Donate link: http://web-design-weekly.com/support
 Tags: campaign monitor, email, stats
 Requires at least: 3.5.1
 Tested up to: 3.8
-Stable tag: 1.1.2
+Stable tag: 1.1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -85,7 +85,7 @@ Features of the plugin include:
 
 == Changelog ==
 
-= 1.1.2 =
+= 1.1.3 =
 Fix — Visibility of stats only for users that can manage options
 
 = 1.1.1 =
@@ -133,7 +133,7 @@ Better Doc's
 
 == Upgrade Notice ==
 
-= 1.1.2 =
+= 1.1.3 =
 Fix — Visibility of stats only for users that can manage options
 
 = 1.1.1 =

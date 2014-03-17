@@ -25,7 +25,7 @@ class CampaignMonitorDashboard {
 	 *
 	 * @var     string
 	 */
-	protected $version = '1.1.2';
+	protected $version = '1.1.3';
 
 	/**
 	 * Unique identifier for your plugin.
