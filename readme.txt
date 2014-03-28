@@ -35,7 +35,7 @@ Features of the plugin include:
 
 [youtube http://www.youtube.com/watch?v=vX3C-ps1jBc]
 
-[Plugin Support & Feature requests] (http://web-design-weekly.com/support/forums/forum/campaign-monitor-dashboard-plugin/).
+[Plugin Support & Feature requests](http://web-design-weekly.com/support/forums/forum/campaign-monitor-dashboard-plugin/).
 
 == Features ==
 * Total Subscribers / Unsubscribers
