@@ -1,10 +1,10 @@
 === Campaign Monitor Dashboard ===
 Contributors: jakebresnehan
 Donate link: http://web-design-weekly.com/support
-Tags: campaign monitor, email, stats
+Tags: campaign monitor, email, stats, graph, widget, shortcode
 Requires at least: 3.5.1
-Tested up to: 3.8
-Stable tag: 1.1.4
+Tested up to: 3.8.1
+Stable tag: 1.1.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -15,7 +15,7 @@ Quickly add Campaign Monitor email forms to your site and display stats right in
 
 **Spend all day in your WordPress admin and also manage a Campaign Monitor email list?**
 
-This plugin can easily add Campaign Monitor email forms to your posts or pages with a simple shortcode and also give you up-to-date feedback on your list stats without having to leave the WordPress admin.
+This plugin can easily add Campaign Monitor email forms to your posts or pages with a simple shortcode and also give you up-to-date feedback on your list stats without having to leave the WordPress admin. Also comes with a dedicated widget and an attractive graph.
 
 Features of the plugin include:
 
@@ -28,12 +28,14 @@ Features of the plugin include:
 * Dedicated Dashboard Widget
 * Sign up Form
 * Useful Shortcodes
+* Dedicated Widget
+* Attractive 90 day Graph
 
 **Getting setup with the plugin**
 
 [youtube http://www.youtube.com/watch?v=vX3C-ps1jBc]
 
-[Plugin Support & Feature requests](http://web-design-weekly.com/support/).
+[Plugin Support & Feature requests] (http://web-design-weekly.com/support/forums/forum/campaign-monitor-dashboard-plugin/).
 
 == Features ==
 * Total Subscribers / Unsubscribers
@@ -45,6 +47,8 @@ Features of the plugin include:
 * Dashboard Widget
 * Sign up Form
 * Useful Shortcodes
+* Dedicated Widget
+* Attractive 90 day Graph
 
 == Installation ==
 1. Upload this zip file to your `/wp-content/plugins/` directory
@@ -85,11 +89,14 @@ Features of the plugin include:
 
 == Changelog ==
 
-= 1.1.4 =
-Fix — Visibility of stats only for users that can manage options
+= 1.1.5 =
+New - 90 day graph
+New - dedicated widget
+New - Plugin is not translation ready :)
 
-= 1.1.1 =
-Fix — Support link reference
+= 1.1.2 =
+Fix — Visibility of stats only for users that can manage options
+Fix - Support forum link
 
 = 1.1.0 =
 Fix — Invalid email on form submission
@@ -133,11 +140,14 @@ Better Doc's
 
 == Upgrade Notice ==
 
-= 1.1.4 =
-Fix — Visibility of stats only for users that can manage options
+= 1.1.5 =
+New - 90 day graph
+New - dedicated widget
+New - Plugin is not translation ready :)
 
-= 1.1.1 =
-Fix — Support link reference
+= 1.1.2 =
+Fix — Visibility of stats only for users that can manage options
+Fix - Support forum link
 
 = 1.1.0 =
 Fix — Invalid email on form submission
