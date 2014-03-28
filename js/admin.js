@@ -1,13 +1,11 @@
 (function (jQuery) {
 
-
 	jQuery(document).ready(function( $ ) {
 
 		jQuery("#tabs").tabs();
 
 		// To handle slow loading of JS :D
 		jQuery(".settings-field").css('display','block');
-
 
 	});
 
@@ -26,12 +24,25 @@ jQuery(window).bind("load", function() {
 		jQuery.post(ajaxurl, data, function (response) {
 			jQuery('#cm-stats').html(response);
 			jQuery('.settings-form').addClass('successful-credentials-toggle');
+			jQuery('#subs-per-month').show();
+		});
+
+		//Subs Per Month Graph
+		data = {
+			action: 'get_month_graph'
+		};
+
+		jQuery.post(ajaxurl, data, function (response) {
+			jQuery('#graph-1').html(response);
+			jQuery('.subs-per-month-waiting').hide();
+			jQuery('#subs-per-month').show();
 		});
 
 	} else {
 
 		jQuery('.major-settings').toggle();
 		jQuery('.waiting').hide();
+		jQuery('.subs-per-month-waiting').hide();
 		jQuery('#cm-stats').html('<p class="cm-error">Please add your correct credentials <span>to get the ball rolling.</span></p>');
 	}
 
