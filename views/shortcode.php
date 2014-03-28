@@ -1,6 +1,5 @@
 <?php
 
-
 // displays the campaign_monitor signup form
  function campaign_monitor_form($redirect, $title, $subtitle, $thanks) {
  	if(strlen(trim($thanks)) <= 0) {
@@ -27,16 +26,15 @@
 				<p><?php echo($subtitle); ?></p>
 			<form action="" method="post">
 
-					<input name="campaign-monitor-email" class="campaign-monitor-email" type="email" placeholder="Email Address"/>
+					<input name="campaign-monitor-email" class="campaign-monitor-email" type="email" placeholder="Your email..."/>
 
 					<input type="hidden" name="action" value="signup"/>
 					<input type="hidden" name="redirect" value="<?php echo $redirect; ?>">
 
-					<input type="submit" value="Sign Up" />
+					<input type="submit" value="<?php _e('Sign Up','campaign-monitor-dashboard'); ?>" />
 
 			</form>
 			</div>
-
 
 			<?php
 		}
@@ -53,30 +51,28 @@ function do_output_buffer() {
 }
 
 
-	/**
-	 * Register the shortcode
-	 * [cmemailform redirect="foo-value" title="foo-value" subtitle="foo-value" thanks="foo-value"]
-	 * @since    1.0.0
-	 */
-	 function campaigntag_code( $atts, $content = null ) {
+/**
+ * Register the shortcode
+ * [cmemailform redirect="foo-value" title="foo-value" subtitle="foo-value" thanks="foo-value"]
+ * @since    1.0.0
+ */
+ function campaigntag_code( $atts, $content = null ) {
 
-		extract( shortcode_atts( array(
-			'redirect' => '',
-			'title' => 'Sign up to our newsletter',
-			'subtitle' => 'Receive updates on a regular basis.',
-			'thanks' => 'Thanks for subscribing!'
-		), $atts ) );
+	extract( shortcode_atts( array(
+		'redirect' => '',
+		'title' => 'Sign up to our newsletter',
+		'subtitle' => 'Receive updates on a regular basis.',
+		'thanks' => 'Thanks for subscribing!'
+	), $atts ) );
 
-		if($redirect == '') {
-			$redirect = add_query_arg('submitted', 'yes', get_permalink());
-		}
-
-		return campaign_monitor_form($redirect, $title, $subtitle, $thanks);
+	if($redirect == '') {
+		$redirect = add_query_arg('submitted', 'yes', get_permalink());
 	}
 
+	return campaign_monitor_form($redirect, $title, $subtitle, $thanks);
+}
+
 add_shortcode( 'cm_email_form', 'campaigntag_code' );
-
-
 
 
 // process the subscribe to list form
@@ -91,13 +87,13 @@ function check_for_email_signup() {
 
 		// check for a valid email
 		 if(!is_email($email)) {
-		 	wp_die(__('Your email address is invalid. Click back and enter a valid email address.', 'pcm'), __('Invalid Email', 'pcm'));
+		 	wp_die(__('Your email address is invalid. Click back and enter a valid email address.', 'campaign-monitor-dashboard'), __('Invalid Email', 'campaign-monitor-dashboard'));
 		 }
 
 		// send this email to campaign_monitor
 		subscribe_email($email);
 
-		 // send user to the confirmation page
+		// send user to the confirmation page
 		wp_redirect(add_query_arg('submitted', '1', $_POST['redirect'])); exit;
 
 		//wp_redirect( home_url() ); exit;
@@ -107,45 +103,38 @@ function check_for_email_signup() {
 add_action('init', 'check_for_email_signup');
 
 
+/**
+ * Subscribe someone to a list
+ *
+ */
+function subscribe_email($email) {
 
+	$cm_api = get_option('cm_api_option');
+	$cm_list = get_option('cm_list_id_option');
 
-	/**
-	 * Subscribe someone to a list
-	 *
-	 */
-	function subscribe_email($email) {
+	$auth = array('api_key' => $cm_api);
+	$wrap = new CS_REST_Subscribers($cm_list, $auth);
 
-		$cm_api = get_option('cm_api_option');
-		$cm_list = get_option('cm_list_id_option');
+	$wrap = new CS_REST_Subscribers($cm_list, $cm_api);
 
-		$auth = array('api_key' => $cm_api);
-		$wrap = new CS_REST_Subscribers($cm_list, $auth);
+	$result = $wrap->add(array(
+		'EmailAddress' => $email,
+		'Resubscribe' => true
+	));
 
-		//$settings = get_option ( $this->option_name );
-
-		$wrap = new CS_REST_Subscribers($cm_list, $cm_api);
-
-		$result = $wrap->add(array(
-			'EmailAddress' => $email,
-			'Resubscribe' => true
-		));
-
-		if($result->was_successful()) {
-			return true;
-		}
-
-		return false;
+	if($result->was_successful()) {
+		return true;
 	}
 
+	return false;
+}
 
 
-
-
-	/**
-	 * Register the shortcode
-	 * [cmtotalsubscribers]
-	 * @since    1.0.0
-	 */
+/**
+ * Register the shortcode
+ * [cmtotalsubscribers]
+ * @since    1.0.0
+ */
 
 function campaigntag_totalsubs( $atts ){
 
@@ -164,11 +153,8 @@ function campaigntag_totalsubs( $atts ){
 	}
 
 	return $total_active_subscribers;
+
 }
 add_shortcode( 'cm_total_subscribers', 'campaigntag_totalsubs' );
-
-
-
-
 
 ?>
