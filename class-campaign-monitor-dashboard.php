@@ -3,7 +3,7 @@
  * Campaign Monitor Dashboard.
  *
  * @package   CampaignMonitorDashboard
- * @author    Jake Bresnehan <hello@jakebresnehan.com>
+ * @author    Jake Bresnehan <jakebresnehan@gmail.com>
  * @license   GPL-2.0+
  * @link      http://web-design-weekly.com
  * @copyright 2013 Jake Bresnehan
@@ -13,7 +13,7 @@
  * Plugin class.
  *
  * @package CampaignMonitorDashboard
- * @author  Jake Bresnehan <hello@jakebresnehan.com>
+ * @author  Jake Bresnehan <jakebresnehan@gmail.com>
  */
 
 class CampaignMonitorDashboard {
@@ -25,7 +25,7 @@ class CampaignMonitorDashboard {
 	 *
 	 * @var     string
 	 */
-	protected $version = '1.1.4';
+	protected $version = '1.1.5';
 
 	/**
 	 * Unique identifier for your plugin.
@@ -79,6 +79,13 @@ class CampaignMonitorDashboard {
 
 		// Loads main Campaign Monitor settings panel
 		add_action( 'wp_ajax_get_cm_settings', array( $this, 'process_cm_settings' ) );
+
+		// Register widget
+		add_action( 'widgets_init', create_function( '', 'register_widget( "campaign_monitor_widget" );' ) );
+
+		// Loads Graph
+		add_action( 'wp_ajax_get_month_graph', array( $this, 'process_graph_data' ) );
+
 
 		if ( get_option('cm_dashboard_widget_option') == "on" ) {
 			add_action('wp_dashboard_setup', array( $this, 'add_cm_dashboard_widget' ) );
@@ -190,15 +197,20 @@ class CampaignMonitorDashboard {
 
 		}
 
+		// Maybe loading this can be done better?
+		if ( $screen->id == $this->plugin_screen_hook_suffix ) {
+			wp_enqueue_script( $this->plugin_slug . '-admin-script-plugins', plugins_url( 'js/admin-plugins.js', __FILE__ ), array( 'jquery' ), $this->version );
+		}
+
+
 	}
 
 	/**
-	 * Register the administration menu into the WordPress Dashboard menu only if the user can manage options.
+	 * Register the administration menu into the WordPress Dashboard menu only for users that can manage options.
 	 *
 	 * @since    1.1.2
 	 */
 	public function add_plugin_admin_menu() {
-
 		if (current_user_can( 'manage_options' )) {
 			$this->plugin_screen_hook_suffix = add_options_page(
 				__( 'Campaign Monitor Dashboard', $this->plugin_slug ),
@@ -214,7 +226,7 @@ class CampaignMonitorDashboard {
 	/**
 	 * Add settings link on plugins.php
 	 *
-	 * @since    1.1.1
+	 * @since    1.0.9
 	 */
 
 	public function my_plugin_action_links( $links ) {
@@ -248,21 +260,20 @@ class CampaignMonitorDashboard {
 
 
 	/**
-	 * Render the dashboard widget view
+	 * Render the dashboard widget view.
 	 *
 	 * @since    1.0.0
 	 */
 	public function dashboard_widget_view() {
-			include_once( 'views/dashboard-widget.php' );
+		include_once( 'views/dashboard-widget.php' );
 	}
 
 	/**
-	 * Register the dashboard widget only for users that can manage options
+	 * Register the dashboard widget only for users that can manage options.
 	 *
 	 * @since    1.1.2
 	 */
 	public function add_cm_dashboard_widget() {
-
 		if (current_user_can( 'manage_options' )) {
 			wp_add_dashboard_widget(
 				'cm_dashboard_widget',
@@ -308,31 +319,31 @@ class CampaignMonitorDashboard {
 			$un_sub_this_month = $stats_result->response->UnsubscribesThisMonth;
 			$un_sub_this_year = $stats_result->response->UnsubscribesThisYear;
 
-			echo "<div class=\"current-list\">";
-			echo "<h3>" .$result->response->Title. "</h3>";
-			echo "<p>Total Subscribers: " .$total_active_subscribers. "</p>";
-			echo "<p class=\"unsub\">Total Unsubscribers: " .$total_unsubscribers. "</p>";
-			echo "</div>";
+			echo '<div class="current-list">';
+			echo '<h3>' . $result->response->Title . '</h3>';
+			echo '<p>' . __('Total Subscribers: ', 'campaign-monitor-dashboard') . $total_active_subscribers . '</p>';
+			echo '<p class="unsub">' . __('Total Unsubscribers: ','campaign-monitor-dashboard') . $total_unsubscribers . '</p>';
+			echo '</div>';
 
-			echo "<div class=\"stats\">";
-			echo "<div class=\"sub-stats\">";
-			echo "<h4>Subscribers</h4>";
-			echo "<p><span>Today</span> " .$new_sub_today. "</p>";
-			echo "<p><span>Yesterday</span> " .$new_sub_yesterday. "</p>";
-			echo "<p><span>This Week</span> " .$new_sub_this_week. "</p>";
-			echo "<p><span>This Month</span> " .$new_sub_this_month. "</p>";
-			echo "<p><span>This Year</span> " .$new_sub_this_year. "</p>";
-			echo "</div>";
+			echo '<div class="stats">';
+			echo '<div class="sub-stats">';
+			echo '<h4>' . __('Subscribers','campaign-monitor-dashboard') . '</h4>';
+			echo '<p><span>' . __('Today ','campaign-monitor-dashboard') . '</span>' . $new_sub_today . '</p>';
+			echo '<p><span>' . __('Yesterday ','campaign-monitor-dashboard') . '</span>' . $new_sub_yesterday . '</p>';
+			echo '<p><span>' . __('This Week ','campaign-monitor-dashboard') . '</span>' . $new_sub_this_week . '</p>';
+			echo '<p><span>' . __('This Month' ,'campaign-monitor-dashboard') .'</span>' . $new_sub_this_month . '</p>';
+			echo '<p><span>' . __('This Year ','campaign-monitor-dashboard') .'</span>' . $new_sub_this_year . '</p>';
+			echo '</div>';
 
-			echo "<div class=\"sub-stats\">";
-			echo "<h4>Unsubscribers</h4>";
-			echo "<p><span>Today</span> " .$un_sub_today. "</p>";
-			echo "<p><span>Yesterday</span> " .$un_sub_yesterday. "</p>";
-			echo "<p><span>This Week</span> " .$un_sub_this_week. "</p>";
-			echo "<p><span>This Month</span> " .$un_sub_this_month. "</p>";
-			echo "<p><span>This Year</span> " .$un_sub_this_year. "</p>";
-			echo "</div>";
-			echo "</div>";
+			echo '<div class="sub-stats">';
+			echo '<h4>' . __('Unsubscribers','campaign-monitor-dashboard') . '</h4>';
+			echo '<p><span>' . __('Today ','campaign-monitor-dashboard') .'</span>' . $un_sub_today . '</p>';
+			echo '<p><span>' . __('Yesterday ','campaign-monitor-dashboard') . '</span>' . $un_sub_yesterday . '</p>';
+			echo '<p><span>' . __('This Week ','campaign-monitor-dashboard') . '</span>' . $un_sub_this_week . '</p>';
+			echo '<p><span>' . __('This Month ','campaign-monitor-dashboard') .'</span>' . $un_sub_this_month . '</p>';
+			echo '<p><span>' . __('This Year ','campaign-monitor-dashboard') . '</span>' . $un_sub_this_year . '</p>';
+			echo '</div>';
+			echo '</div>';
 
 			?>
 				<!-- Would like to have this in admin js... -->
@@ -343,9 +354,7 @@ class CampaignMonitorDashboard {
 			<?php
 
 		} else {
-			echo '<p class="cm-error">';
-			echo 'Please add your correct credentials <span>to get the ball rolling.</span>';
-			echo '</p>';
+			echo '<p class="cm-error">' . __('Please add your correct credentials ','campaign-monitor-dashboard') . '<span>' . __('to get the ball rolling.','campaign-monitor-dashboard') . '</span></p>';
 			?>
 				<!-- Would like to have this in admin js... -->
 				<script type="text/javascript">
@@ -367,6 +376,123 @@ class CampaignMonitorDashboard {
 	 */
 	public function campaigntag_view() {
 		include_once( 'views/shortcode.php' );
+	}
+
+	/**
+	 * Ajax subscribers per month graph data
+	 *
+	 * @since    1.1.2
+	 */
+	public function process_graph_data() {
+		$cm_api = get_option('cm_api_option');
+		$cm_list = get_option('cm_list_id_option');
+		$auth = array('api_key' => $cm_api);
+
+		$wrap = new CS_REST_Lists($cm_list, $auth);
+
+		function get_actives($auth, $page_number)
+		{
+			// last 90 days
+			$date_from = date('Y-m-d', strtotime('-90 days'));
+
+			// params: start date, page number, page size, order by, order direction
+			$result = $auth->get_active_subscribers($date_from, $page_number, 1000, 'date', 'asc');
+
+			if($result->was_successful()) {
+
+			} else {
+
+				echo '<p>Failed to get results, please refresh the page.</p>';
+			}
+
+			return $result;
+		}
+
+
+			function add_results_to_stack($stack, $result) {
+				foreach($result->response->Results as $list) {
+					$date = $list->Date;
+					$d = substr($date, 0, 7);   // just get the month part of the $list->Date
+					$niceDate = date("M-y", strtotime($d));
+					array_push($stack, $niceDate);
+				}
+
+				return $stack;
+			}
+
+		// start of API calls
+
+		// get the first page of results
+		$result = get_actives($wrap, 1);
+		$stack = add_results_to_stack(array(), $result);
+
+
+		// check if we need to get more pages
+		// we've already got page 1; loop from 1 until < num_pages, and get additional pages if necessary
+		$num_pages = $result->response->NumberOfPages;
+		for($i = 1; $i < $num_pages; $i++) {
+			$next_page = $i+1;
+			$result = get_actives($wrap, $next_page);
+			$stack = add_results_to_stack($stack, $result);
+		}
+
+		// $stack now contains the results for all _active_ subscribers
+		// get data for graph
+		$graph_data = array_count_values($stack);
+
+		// end of API calls
+
+		$php_keys = array_keys($graph_data);
+		$js_keys = json_encode($php_keys);
+		$php_vals = array_values($graph_data);
+		$js_vals = json_encode($php_vals);
+
+
+		// just make sure we have the data to pump into the map
+		if (count($php_keys) > 3) {
+
+			?>
+
+			<script type="text/javascript">
+			jQuery(function () {
+				var lineChartDataMonthly = {
+						labels : <?php echo $js_keys; ?>,
+						datasets : [
+							{
+								fillColor : "rgba(151,187,205,0.5)",
+								strokeColor : "rgba(151,187,205,1)",
+								pointColor : "rgba(151,187,205,1)",
+								pointStrokeColor : "#fff",
+								data : <?php echo $js_vals; ?>
+							}
+						]
+					}
+
+				var myLine = new Chart(document.getElementById("canvas-graph-1").getContext("2d")).Line(lineChartDataMonthly);
+			});
+			</script>
+
+			<?php
+
+		} else {
+
+			?>
+
+			<script type="text/javascript">
+				jQuery(function () {
+
+				jQuery("#subs-per-month h3").remove();
+
+				jQuery("#subs-per-month").before("<p class=\"cm-error\">Unfortunately your list doesn't have have enough data yet.<br /><span>Give it time and a nice graph will display.</span></p>");
+
+				});
+
+			</script>
+
+			<?php
+		}
+
+		die();
 	}
 
 
