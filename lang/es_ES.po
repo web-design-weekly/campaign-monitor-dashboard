@@ -8,269 +8,286 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2014-03-28 13:37+1000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"X-Generator: Poedit 1.5.7\n"
 
 #: class-campaign-monitor-dashboard-widget.php:31
 msgid "A sign up form for your site."
-msgstr ""
+msgstr "Un formulario de registro para su sitio."
 
 #: class-campaign-monitor-dashboard-widget.php:141
 msgid "Sign up to our newsletter"
-msgstr ""
+msgstr "Suscríbase a nuestro boletín de noticias"
 
 #: class-campaign-monitor-dashboard-widget.php:148
 msgid "Receive updates on a regular basis."
-msgstr ""
+msgstr "Recibe actualizaciones de forma regular."
 
 #: class-campaign-monitor-dashboard-widget.php:153
 msgid "Title:"
-msgstr ""
+msgstr "Título:"
 
 #: class-campaign-monitor-dashboard-widget.php:158
 msgid "Subtitle:"
-msgstr ""
+msgstr "Subtítulo:"
 
 #. #-#-#-#-#  plugin.pot (Campaign Monitor Dashboard 1.1.5)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: class-campaign-monitor-dashboard.php:216 views/admin.php:19
 msgid "Campaign Monitor Dashboard"
-msgstr ""
+msgstr "Campaña Monitor de Dashboard"
 
 #: class-campaign-monitor-dashboard.php:217
 msgid "Campaign Monitor"
-msgstr ""
+msgstr "Campaign Monitor"
 
 #: class-campaign-monitor-dashboard.php:324 views/dashboard-widget.php:31
 msgid "Total Subscribers: "
-msgstr ""
+msgstr "Los suscriptores totales:"
 
 #: class-campaign-monitor-dashboard.php:325
 msgid "Total Unsubscribers: "
-msgstr ""
+msgstr "Total de baja de la suscripción:"
 
 #: class-campaign-monitor-dashboard.php:330 views/dashboard-widget.php:35
 msgid "Subscribers"
-msgstr ""
+msgstr "suscriptores"
 
 #: class-campaign-monitor-dashboard.php:331
 #: class-campaign-monitor-dashboard.php:340
 msgid "Today "
-msgstr ""
+msgstr "hoy"
 
 #: class-campaign-monitor-dashboard.php:332
 #: class-campaign-monitor-dashboard.php:341
 msgid "Yesterday "
-msgstr ""
+msgstr "ayer"
 
 #: class-campaign-monitor-dashboard.php:333
 #: class-campaign-monitor-dashboard.php:342
 msgid "This Week "
-msgstr ""
+msgstr "Esta Semana"
 
 #: class-campaign-monitor-dashboard.php:334 views/dashboard-widget.php:39
 #: views/dashboard-widget.php:47
 msgid "This Month"
-msgstr ""
+msgstr "Este Mes"
 
 #: class-campaign-monitor-dashboard.php:335
 #: class-campaign-monitor-dashboard.php:344
 msgid "This Year "
-msgstr ""
+msgstr "Este Año"
 
 #: class-campaign-monitor-dashboard.php:339 views/dashboard-widget.php:43
 msgid "Unsubscribers"
-msgstr ""
+msgstr "unsubscribers"
 
 #: class-campaign-monitor-dashboard.php:343
 msgid "This Month "
-msgstr ""
+msgstr "Este Mes"
 
 #: class-campaign-monitor-dashboard.php:357 views/dashboard-widget.php:55
 msgid "Please add your correct credentials "
-msgstr ""
+msgstr "Por favor, añadir sus credenciales correctas"
 
 #: class-campaign-monitor-dashboard.php:357 views/dashboard-widget.php:55
 msgid "to get the ball rolling."
-msgstr ""
+msgstr "para conseguir el balanceo de la bola."
 
 #: views/admin.php:28
 msgid "Hey!"
-msgstr ""
+msgstr "Hey!"
 
 #: views/admin.php:28
 msgid "Thanks for taking the time to install this plugin."
-msgstr ""
+msgstr "Gracias por tomarse el tiempo para instalar este plugin."
 
 #: views/admin.php:28
 msgid "Unfortunately there is another plugin installed which uses an "
-msgstr ""
+msgstr "Desafortunadamente, no es otro plugin instalado que utiliza un"
 
 #: views/admin.php:28
 msgid "old "
-msgstr ""
+msgstr "viejo"
 
 #: views/admin.php:28
 msgid ""
 "version of the Campaign Monitor API. This is causing some conflicting issues."
 msgstr ""
+"versión de la API de Campaign Monitor. Esto está causando algunos problemas "
+"conflictivos."
 
 #: views/admin.php:28
 msgid "To use this plugin you will need to un-install that plugin."
-msgstr ""
+msgstr "Para utilizar este plugin tendrá que desinstalar ese plugin."
 
 #: views/admin.php:28
 msgid ""
 "If you would like more details on why this is the case, please don't "
 "hesitate to use the dedicated "
 msgstr ""
+"Si desea más detalles acerca de por qué este es el caso, por favor, no dude "
+"en utilizar el dedicado"
 
 #: views/admin.php:28
 msgid "Support Forum."
-msgstr ""
+msgstr "Foro Atención al Cliente."
 
 #: views/admin.php:39
 msgid "Your Stats"
-msgstr ""
+msgstr "Sus estadísticas"
 
 #: views/admin.php:40
 msgid "Graph"
-msgstr ""
+msgstr "gráfico"
 
 #: views/admin.php:41
 msgid "Shortcodes"
-msgstr ""
+msgstr "shortcodes"
 
 #: views/admin.php:42
 msgid "Support"
-msgstr ""
+msgstr "apoyo"
 
 #: views/admin.php:52
 msgid "Edit Credentials"
-msgstr ""
+msgstr "editar Credenciales"
 
 #: views/admin.php:58
 msgid "API"
-msgstr ""
+msgstr "API"
 
 #: views/admin.php:61
 msgid "List ID"
-msgstr ""
+msgstr "Lista de ID"
 
 #: views/admin.php:65
 msgid "Save Changes"
-msgstr ""
+msgstr "Guardar cambios"
 
 #: views/admin.php:69
 msgid "Find API Key"
-msgstr ""
+msgstr "Encuentra API Key"
 
 #: views/admin.php:70
 msgid "Find List ID"
-msgstr ""
+msgstr "Find List ID"
 
 #: views/admin.php:74
 msgid "Show as Dashboard Widget"
-msgstr ""
+msgstr "Mostrar como Dashboard Widget"
 
 #: views/admin.php:92
 msgid "Subscribers Per Month "
-msgstr ""
+msgstr "Los suscriptores por mes"
 
 #: views/admin.php:92
 msgid "(Last 90 days)"
-msgstr ""
+msgstr "(Últimos 90 días)"
 
 #: views/admin.php:108
 msgid ""
 "The Campaign Monitor Dashboard plugin has a few easy shortcodes for your "
 "convenience."
 msgstr ""
+"El Dashboard plugin de Campaign Monitor tiene algunos códigos cortos fáciles "
+"para su conveniencia."
 
 #: views/admin.php:110
 msgid "Email Form Shortcode: "
-msgstr ""
+msgstr "Email Formulario abreviado:"
 
 #: views/admin.php:112
 msgid "Total Subscribers Shortcode: "
-msgstr ""
+msgstr "Los suscriptores totales abreviado:"
 
 #: views/admin.php:115
 msgid "Email Form Shortcode"
-msgstr ""
+msgstr "Email Formulario abreviado"
 
 #: views/admin.php:117
 msgid ""
 "Once you have entered your correct Campaign Monitor credentials you can add "
 "sign up forms to any of your posts or pages with a simple shortcode."
 msgstr ""
+"Una vez que haya introducido sus credenciales correctas Campaign Monitor "
+"puede agregar formularios de registro a cualquiera de tus posts o páginas "
+"con un simple código corto."
 
 #: views/admin.php:121
 msgid "Shortcode Options"
-msgstr ""
+msgstr "Opciones shortcode"
 
 #: views/admin.php:123
 msgid "The shortcode come built with 4 options:"
-msgstr ""
+msgstr "El shortcode llegado construidos con 4 opciones:"
 
 #: views/admin.php:127
 msgid "Title"
-msgstr ""
+msgstr "título"
 
 #: views/admin.php:128
 msgid "Subtitle"
-msgstr ""
+msgstr "subtítulo"
 
 #: views/admin.php:129
 msgid "Thanks"
-msgstr ""
+msgstr "gracias"
 
 #: views/admin.php:130
 msgid "Redirect"
-msgstr ""
+msgstr "Redireccionar"
 
 #: views/admin.php:133
 msgid ""
 "To custormise the output of you email sign up form all you need to do is "
 "give any of the options your desired value."
 msgstr ""
+"Para custormise la salida del correo electrónico que inscribirse forma todo "
+"lo que necesita hacer es darle a cualquiera de las opciones de su valor "
+"deseado."
 
 #: views/admin.php:135
 msgid ""
 "Note: Your thank you message will only be displayed if you do not provide a "
 "redirect."
 msgstr ""
+"Nota: El mensaje de agradecimiento sólo se mostrará si no se proporciona una "
+"redirección."
 
 #: views/admin.php:138
 msgid "YOUR TITLE"
-msgstr ""
+msgstr "SU TÍTULO"
 
 #: views/admin.php:138
 msgid "YOUR SUBTITLE"
-msgstr ""
+msgstr "SU SUBTÍTULO"
 
 #: views/admin.php:138
 msgid "YOUR THANK YOU MESSAGE"
-msgstr ""
+msgstr "SU mensaje de agradecimiento"
 
 #: views/admin.php:140
 msgid ""
 "If you do not want the default output, just declare the option with a blank "
 "value."
 msgstr ""
+"Si usted no desea que la salida por defecto, declarar la opción con un valor "
+"en blanco."
 
 #: views/admin.php:142
 msgid "Like so: "
-msgstr ""
+msgstr "Al igual que:"
 
 #: views/admin.php:142
 msgid "OPTION"
-msgstr ""
+msgstr "OPCIÓN"
 
 #: views/admin.php:144
 msgid "Customising With CSS"
-msgstr ""
+msgstr "Personalizar con CSS"
 
 #: views/admin.php:145
 msgid ""
@@ -278,73 +295,84 @@ msgid ""
 "If you would like to custormise the look, you can simply just use the "
 "following CSS classes in your stylesheet."
 msgstr ""
+"El formulario abreviado Campaign Monitor de Dashboard no viene con ningún "
+"estilo. Si usted desea custormise la mirada, usted puede simplemente "
+"utilizar las siguientes clases CSS en la hoja de estilos."
 
 #: views/admin.php:159
 msgid "Total Subscribers Shortcode"
-msgstr ""
+msgstr "Los suscriptores totales abreviado"
 
 #: views/admin.php:161
 msgid ""
 "To output the total number of subscribers to your Campaign Monitor list, "
 "just use the following handy shortcode."
 msgstr ""
+"Para dar salida al número total de suscriptores a su lista de Campaign "
+"Monitor, sólo tiene que utilizar el siguiente código abreviado práctico."
 
 #: views/admin.php:173
 msgid "Need Help? "
-msgstr ""
+msgstr "Necesita ayuda?"
 
 #: views/admin.php:173
 msgid ""
 "If for some reason you need help or have a feature request, please don't "
 "hesitate to submit a request on the dedicated support forum."
 msgstr ""
+"Si por alguna razón usted necesita ayuda o tiene una solicitud de función, "
+"por favor no dude en presentar una solicitud en el foro de soporte dedicado."
 
 #: views/admin.php:173
 msgid "Support Forum &rarr;"
-msgstr ""
+msgstr "Foro de soporte técnico →"
 
 #: views/dashboard-widget.php:36 views/dashboard-widget.php:44
 msgid "Today"
-msgstr ""
+msgstr "hoy"
 
 #: views/dashboard-widget.php:37 views/dashboard-widget.php:45
 msgid "Yesterday"
-msgstr ""
+msgstr "ayer"
 
 #: views/dashboard-widget.php:38 views/dashboard-widget.php:46
 msgid "This Week"
-msgstr ""
+msgstr "Esta Semana"
 
 #: views/shortcode.php:6
 msgid "You have been successfully subscribed"
-msgstr ""
+msgstr "Usted ha sido suscrito con éxito"
 
 #: views/shortcode.php:34
 msgid "Sign Up"
-msgstr ""
+msgstr "Regístrese"
 
 #: views/shortcode.php:90
 msgid ""
 "Your email address is invalid. Click back and enter a valid email address."
 msgstr ""
+"Su dirección de correo electrónico no es válida. Haga clic de nuevo y "
+"escriba una dirección de correo electrónico válida."
 
 #: views/shortcode.php:90
 msgid "Invalid Email"
-msgstr ""
+msgstr "inválido Email"
 
 #. #-#-#-#-#  plugin.pot (Campaign Monitor Dashboard 1.1.5)  #-#-#-#-#
 #. Plugin URI of the plugin/theme
 #. #-#-#-#-#  plugin.pot (Campaign Monitor Dashboard 1.1.5)  #-#-#-#-#
 #. Author URI of the plugin/theme
 msgid "http://web-design-weekly.com"
-msgstr ""
+msgstr "http://web-design-weekly.com"
 
 #. Description of the plugin/theme
 msgid ""
 "Display stats from your Campaign Monitor email list and easily add sign up "
 "forms to your site."
 msgstr ""
+"Mostrar las estadísticas de su lista de correo electrónico Campaign Monitor "
+"y fácilmente añadir firmar los formularios para su sitio."
 
 #. Author of the plugin/theme
 msgid "Jake Bresnehan"
-msgstr ""
+msgstr "Jake Bresnehan"
