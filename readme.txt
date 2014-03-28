@@ -92,7 +92,7 @@ Features of the plugin include:
 = 1.1.5 =
 New - 90 day graph
 New - dedicated widget
-New - Plugin is not translation ready :)
+New - Plugin is now translation ready :)
 
 = 1.1.2 =
 Fix — Visibility of stats only for users that can manage options
@@ -143,7 +143,7 @@ Better Doc's
 = 1.1.5 =
 New - 90 day graph
 New - dedicated widget
-New - Plugin is not translation ready :)
+New - Plugin is now translation ready :)
 
 = 1.1.2 =
 Fix — Visibility of stats only for users that can manage options
